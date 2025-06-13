@@ -8,3 +8,4 @@ cd $(mktemp -d)
 wget https://github.com/docugami/KG-RAG-datasets/archive/547f132d3c2bcc2b9976ca1d8413b99d8ba45aa1.zip -O datasets.zip
 unzip datasets.zip
 cp ./KG-RAG-datasets-*/sec-10-q/data/v1/docs/* $OUT_DIR
+cp ./KG-RAG-datasets-*/sec-10-q/data/v1/qna_data*.csv $OUT_DIR
