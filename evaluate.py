@@ -24,7 +24,7 @@ def evaluate(question: str, source_docs: str, question_type: str, source_chunk_t
     print('-'*30)
     print(answer)
     output = ollama.generate(
-        generate_model,
+        "qwen3:4b",
         prompt="Respond whether the given answer is correct. Answer with a single YES or NO at the end of your response.\n" \
         + f"Correct Answer:\n{answer}" \
         + f"Attempt:\n{my_answer}",
