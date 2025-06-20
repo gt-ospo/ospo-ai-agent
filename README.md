@@ -29,4 +29,4 @@ The following were considered:
 - https://www.kaggle.com/datasets/dkhundley/sample-rag-knowledge-item-dataset
 - https://www.kaggle.com/datasets/samuelmatsuoharris/single-topic-rag-evaluation-dataset?select=single_passage_answer_questions.csv
 
-KG-RAG was selected mainly for the transparency/provenance of the data source.
+KG-RAG was selected mainly for the transparency/provenance of the data source (as it was from public SEC filings), and because it had a regular format for all of its documents.
