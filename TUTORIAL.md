@@ -2,6 +2,8 @@
 
 This tutorial will walk you through making a simple RAG-based chatbot/agent using PACE ICE's compute resources.
 
+Although this tutorial is applicable to many types of source datasets (i.e. data used as ground truths by the AI agent), we will follow along with an example that makes a chatbot/agent for public SEC filings.
+
 ## Prerequisites
 
 - Python: basic knowledge (for loops, method calls, generators, etc)
@@ -41,4 +43,20 @@ Click "Connect to Jupyter" to open a new tab with your new environment.
   - `chromadb` - simple vector database suited for prototyping (cf. [vector database comparison](https://github.com/gt-ospo/vsip-summer-2025-projects/blob/516848e0aef4465d0e666b573fa39767aa79d755/project-updates/ai-agent/Ken_Shibata.md#week-of-2025-jun-13))
 5. (This will take a few ten minutes.) Run `python pull_models.py` to download a few models, so you can experiment and see which suits your use case the best.
 
-## Step 3. 
+## Step 3. Consider your Source Data
+
+Listed below are a few questions to answer about your source dataset.
+
+- What format is it in?
+  - Examples: video, audio, PDF, plain text
+- What format is the information in?
+  - Is there a lot of template text (e.g. headers, legal notices)?
+  - Is all data the same format (e.g. all plain text), or is there multiple (e.g. a graph and some text)
+
+Based on anecdotal evidence, an LLM is more likely to hallucinate if given a *lot* of unnecessary information. Therefore, to make a good RAG chatbot, we want to give the LLM the minimum amount of information that still results in a good answer.
+
+## Step 4. Consider how to Partition and Retrieve your Source Data
+
+- Retrieval
+  - Vector DB
+  - plain text
