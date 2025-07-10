@@ -4,27 +4,32 @@ import csv
 
 import ollama
 
-from rag import load_text, ask
+import rag
 
 
 generate_model = os.environ.get("MODEL", "llama3.2:3b")
-embed_model = "nomic-embed-text"
+embed_model = os.environ.get("EMBED_MODEL", "nomic-embed-text")
+
 print("loading documents...", file=sys.stderr)
-collection = load_text(
+# collection = rag.load_text(
+#     embed_model=embed_model,
+#     embeddings_path="embeddings",
+#     text_path="summaries",
+# )
+collection = rag.load_text2(
     embed_model=embed_model,
-    embeddings_path="embeddings",
-    text_path="summaries",
+    embeddings_path="embed2",
 )
 
 def evaluate(question: str, source_docs: str, question_type: str, source_chunk_type: str, answer: str):
     epilogue = "Focus on financial figures such as net sales, operating expenses, and losses."
-    my_answer = ask(question + epilogue, collection, embed_model=embed_model, generate_model=generate_model)
+    my_answer = rag.ask2(question + epilogue, collection, embed_model=embed_model, generate_model=generate_model)
     print('='*30)
     print(my_answer)
     print('-'*30)
     print(answer)
     output = ollama.generate(
-        generate_model,
+        "qwen3:4b",
         prompt="Respond whether the given answer is correct. Answer with a single YES or NO at the end of your response.\n" \
         + f"Correct Answer:\n{answer}" \
         + f"Attempt:\n{my_answer}",

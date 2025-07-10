@@ -3,6 +3,7 @@ import subprocess
 import sys
 import os
 import os.path
+import time
 
 import ollama
 import chromadb
@@ -34,7 +35,32 @@ def load_text(*, embed_model: str, embeddings_path: str, text_path: str):
             )
         n_loaded += 1
     return collection
-
+    
+def load_text2(*, embed_model: str, embeddings_path: str):
+    client = chromadb.Client()
+    collection = client.create_collection(name="docs")
+    n_loaded = 0
+    files = os.listdir(embeddings_path)
+    files = [name for name in files if name[0] != '.' and not name.endswith(".marker")]
+    last_print = time.time()
+    for name in files:
+        now = time.time()
+        if now - last_print > 1:
+            print(f"loaded {n_loaded}/{len(files)}.", file=sys.stderr)
+            last_print = now
+        try:
+            with open(os.path.join(embeddings_path, name)) as f:
+                data = json.load(f)
+                collection.add(
+                    ids=[name],
+                    embeddings=data['vector'][0],
+                    documents=data['chunk_text'],
+                )
+        except:
+            print(f"error while loading {name}:", file=sys.stderr)
+            raise
+        n_loaded += 1
+    return collection
 
 def ask(query: str, collection, *, embed_model: str, generate_model: str):
     retrieval_query = ollama.generate(
@@ -75,6 +101,43 @@ def ask(query: str, collection, *, embed_model: str, generate_model: str):
         #     continue
         print(f"- {id}")
         texts2.append(helpful_output)
+    print("answering...")
+    output = ollama.generate(
+        generate_model,
+        prompt=f"Respond to the query using this data: {query}\n {'\n'.join(texts2)}. Respond to this query: {query}",
+    )
+    return output["response"]
+
+def ask2(query: str, collection, *, embed_model: str, generate_model: str):
+    retrieval_query = ollama.generate(
+        generate_model,
+        prompt=f"You are a search agent. Below is a search query from a user.\n> {query}\nWhat keywords are the best for finding information for the query? Return ONLY the queries, and nothing else - no explanation.",
+    )["response"]
+    print(f"retrieval_query={retrieval_query}")
+    resp = ollama.embed(embed_model, retrieval_query)
+    results = collection.query(
+        query_embeddings=resp["embeddings"],
+        n_results=8,
+    )
+    if len(results['ids'][0]) == 0:
+        raise RuntimeError("no documents retrieved")
+    docs_list = "\n- ".join(ids for ids in results["ids"][0])
+    print(f"using these documents:\n- {docs_list}", file=sys.stderr)
+    texts = results['documents'][0]
+    print("using these documents (filtered):")
+    # texts2 = []
+    # for i, text in enumerate(texts):
+    #     id = results["ids"][0][i]
+    #     text_ = "> " + text.replace("\n", "\n> ")
+    #     helpful_output = ollama.generate(
+    #         generate_model,
+    #         prompt=f"As a search agent, you are helping someone answer their question. \n\nQuery: {query}\n\nName of Text:\n{id}\n\nDoes the text significantly contribute towards the answer? If no, write NO. If yes, write YES."
+    #     )["response"]
+    #     if "NO" in helpful_output:
+    #         continue
+    #     print(f"- {id}")
+    #     texts2.append(helpful_output)
+    texts2 = texts
     print("answering...")
     output = ollama.generate(
         generate_model,
