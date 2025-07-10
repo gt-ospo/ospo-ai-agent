@@ -20,7 +20,7 @@ The easiest way to get started with LLMs on ICE is to go to Open OnDemand, click
 Select "Temporary directory" as your Ollama models directory.
 This directory is where the LLMs will be downloaded to. Since "PACE shared models" does not allow downloading additional models, we will use "Temporary directory" and download the models ourselves.
 <!-- ![dropdown for choosing Ollama models directory](https://github.com/user-attachments/assets/1397c880-1892-4987-b718-eb6d1c1eeb48) -->
-<img src='https://github.com/user-attachments/assets/1397c880-1892-4987-b718-eb6d1c1eeb48' alt='dropdown for choosing Ollama models directory' size='256'/>
+<img src='https://github.com/user-attachments/assets/1397c880-1892-4987-b718-eb6d1c1eeb48' alt='dropdown for choosing Ollama models directory' width='512'/>
 
 For the node type, select "NVIDIA GPU (first avail)." This will ensure you get a GPU of some sort, while making sure you won't wait too long for a specific GPU to free up.
 
