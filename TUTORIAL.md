@@ -67,7 +67,8 @@ On the AI side, there are a couple of approaches: a) multimodal (read: images) e
 The former is not actually implemented in `ollama` yet, so we will skip this method.
 The latter is quite simple. You feed an image into a multimodal model, and ask it to describe the image. The output of that can then be treated as normal textual data.
 A simple that does this is available as `image_to_text.py`, and can be used as follows:
-Input: ![A view of tech tower in the evening](tech-tower.jpg)
+
+Input: ![A view of Tech Tower from around J. S. Coon in the afternoon](tech-tower.jpg)
 ```
 $ python image_to_text.py ./tech-tower.jpg 2> /dev/null
 The image captures a detailed view of a red brick tower building with a slate-gray roof, framed by dark foliage against a brilliant blue sky.  Decorative elements adorn the building’s upper structure, showcasing a classic architectural style and conveying a sense of historical grandeur.
