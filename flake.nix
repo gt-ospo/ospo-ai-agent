@@ -18,9 +18,12 @@
           poppler-utils
           (python3.withPackages (p: with p; [
             ollama
+            nltk
+            numpy
             chromadb
-            pypandoc
-            nbformat
+
+            jupytext
+            jupyterlab
           ]))
         ];
       };

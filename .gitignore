@@ -4,3 +4,5 @@
 /docs
 .direnv
 .envrc
+/sample_embeddings
+.ipynb_checkpoints
