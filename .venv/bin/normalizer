@@ -1,4 +1,4 @@
-#!/home/hice1/kshibata6/ospo-ai-agent/.venv/bin/python3.12
+#!/home/hice1/kshibata6/ospo-ai-agent/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
