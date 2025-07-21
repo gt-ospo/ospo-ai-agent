@@ -36,5 +36,5 @@ print(full_summary)
 print("^^^ full summary")
 with open(summary_path, "w") as f:
     f.write(full_summary)
-print(f"embedded {text_path} to {summary_path}.", file=sys.stderr)
+print(f"summarized {text_path} to {summary_path}.", file=sys.stderr)
 
