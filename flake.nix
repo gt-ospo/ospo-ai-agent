@@ -19,6 +19,8 @@
           (python3.withPackages (p: with p; [
             ollama
             chromadb
+            pypandoc
+            nbformat
           ]))
         ];
       };
