@@ -1,0 +1,995 @@
+---------------------------------------
+Begin Slurm Prolog: Jul-22-2025 04:36:59
+Job ID:    2707747
+User ID:   kshibata6
+Account:   coc
+Job name:  ospo-ai-agent-marker-pdf
+Partition: ice-gpu
+QOS:       pace-ice
+---------------------------------------
++ hostname
+atl1-1-03-012-18-0.pace.gatech.edu
++ module purge
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ module load ollama/0.9.0 python
++ '[' -z '' ']'
++ case "$-" in
++ __lmod_sh_dbg=x
++ '[' -n x ']'
++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output
+Shell debugging restarted
++ unset __lmod_sh_dbg
++ return 0
++ source .venv/bin/activate
+++ deactivate nondestructive
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
+++ '[' -n '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV=/home/hice1/kshibata6/ospo-ai-agent/.venv
+++ VIRTUAL_ENV=/home/hice1/kshibata6/ospo-ai-agent/.venv
+++ _OLD_VIRTUAL_PATH=/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.12.5-5sase6atfv2x5tf7dy5x5sqfzyguhsia/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/sqlite-3.46.0-norhm4ob6kggg3lgo5obegig5xkgmush/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/gettext-0.22.5-ojoqw7wobamf7lomzhevy6ybmcwfb4p5/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/tar-1.30-7aefvn4ajcbbgbekjba435ywh7t7llqe/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/pigz-2.8-24535gticd4bsngtba7u5zvjys4cavky/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/libxml2-2.10.3-74cdfskx2ynzc5c6e4whhllkcjgpnzib/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/gdbm-1.23-uej47lxatl3jfta4jufteph6thgiaij7/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/ncurses-6.5-xkpgqwdpefvpxrfhb73v7pudy3is6f2q/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/expat-2.6.3-3xbn2lutcsvoao4jdusyqrpat7qdapsm/bin:/usr/local/pace-apps/manual/packages/ollama/0.9.0/bin:/opt/slurm/current/bin:/opt/pace-common/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/iozone/bin:/home/hice1/kshibata6/bin
+++ PATH=/home/hice1/kshibata6/ospo-ai-agent/.venv/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/python-3.12.5-5sase6atfv2x5tf7dy5x5sqfzyguhsia/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/sqlite-3.46.0-norhm4ob6kggg3lgo5obegig5xkgmush/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/gettext-0.22.5-ojoqw7wobamf7lomzhevy6ybmcwfb4p5/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/tar-1.30-7aefvn4ajcbbgbekjba435ywh7t7llqe/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/pigz-2.8-24535gticd4bsngtba7u5zvjys4cavky/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/libxml2-2.10.3-74cdfskx2ynzc5c6e4whhllkcjgpnzib/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/gdbm-1.23-uej47lxatl3jfta4jufteph6thgiaij7/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/ncurses-6.5-xkpgqwdpefvpxrfhb73v7pudy3is6f2q/bin:/usr/local/pace-apps/spack/packages/linux-rhel9-x86_64_v3/gcc-11.3.1/expat-2.6.3-3xbn2lutcsvoao4jdusyqrpat7qdapsm/bin:/usr/local/pace-apps/manual/packages/ollama/0.9.0/bin:/opt/slurm/current/bin:/opt/pace-common/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/iozone/bin:/home/hice1/kshibata6/bin
+++ export PATH
+++ '[' -n '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(.venv) '
+++ export PS1
+++ VIRTUAL_ENV_PROMPT='(.venv) '
+++ export VIRTUAL_ENV_PROMPT
+++ hash -r
++ sleep 3
++ ollama serve
+time=2025-07-22T04:37:01.631-04:00 level=INFO source=routes.go:1234 msg="server config" env="map[CUDA_VISIBLE_DEVICES:0,1 GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:4096 OLLAMA_DEBUG:INFO OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/home/hice1/kshibata6/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-07-22T04:37:01.646-04:00 level=INFO source=images.go:479 msg="total blobs: 21"
+time=2025-07-22T04:37:01.649-04:00 level=INFO source=images.go:486 msg="total unused blobs removed: 0"
+time=2025-07-22T04:37:01.652-04:00 level=INFO source=routes.go:1287 msg="Listening on 127.0.0.1:11434 (version 0.9.0)"
+time=2025-07-22T04:37:01.652-04:00 level=INFO source=gpu.go:217 msg="looking for compatible GPUs"
+time=2025-07-22T04:37:02.584-04:00 level=INFO source=types.go:130 msg="inference compute" id=GPU-09cf3e2e-1b24-1314-f24c-a19b72b4afef library=cuda variant=v12 compute=9.0 driver=12.8 name="NVIDIA H100 80GB HBM3" total="79.2 GiB" available="78.7 GiB"
+time=2025-07-22T04:37:02.584-04:00 level=INFO source=types.go:130 msg="inference compute" id=GPU-a0e0b270-233e-8ebd-08ae-abf8fb1c28d7 library=cuda variant=v12 compute=9.0 driver=12.8 name="NVIDIA H100 80GB HBM3" total="79.2 GiB" available="78.7 GiB"
++ for file in docs/*.pdf
++ marker_single 'docs/2022 Q3 AAPL.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing layout:  33%|███▎      | 1/3 [00:02<00:04,  2.09s/it]Recognizing layout:  67%|██████▋   | 2/3 [00:02<00:01,  1.13s/it]Recognizing layout: 100%|██████████| 3/3 [00:02<00:00,  1.32it/s]Recognizing layout: 100%|██████████| 3/3 [00:02<00:00,  1.05it/s]
+Running OCR Error Detection:   0%|          | 0/2 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 2/2 [00:00<00:00, 27.39it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:02,  1.41s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.31s/it]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.16it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.01it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s]time=2025-07-22T04:38:00.627-04:00 level=INFO source=sched.go:788 msg="new model will fit in available VRAM in single GPU, loading" model=/home/hice1/kshibata6/.ollama/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff gpu=GPU-a0e0b270-233e-8ebd-08ae-abf8fb1c28d7 parallel=2 available=84478590976 required="3.7 GiB"
+time=2025-07-22T04:38:01.061-04:00 level=INFO source=server.go:135 msg="system memory" total="2015.0 GiB" free="1961.4 GiB" free_swap="8.0 GiB"
+time=2025-07-22T04:38:01.062-04:00 level=INFO source=server.go:168 msg=offload library=cuda layers.requested=-1 layers.model=29 layers.offload=29 layers.split="" memory.available="[78.7 GiB]" memory.gpu_overhead="0 B" memory.required.full="3.7 GiB" memory.required.partial="3.7 GiB" memory.required.kv="896.0 MiB" memory.required.allocations="[3.7 GiB]" memory.weights.total="1.9 GiB" memory.weights.repeating="1.6 GiB" memory.weights.nonrepeating="308.2 MiB" memory.graph.full="424.0 MiB" memory.graph.partial="570.7 MiB"
+llama_model_loader: loaded meta data with 30 key-value pairs and 255 tensors from /home/hice1/kshibata6/.ollama/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.2 3B Instruct
+llama_model_loader: - kv   3:                           general.finetune str              = Instruct
+llama_model_loader: - kv   4:                           general.basename str              = Llama-3.2
+llama_model_loader: - kv   5:                         general.size_label str              = 3B
+llama_model_loader: - kv   6:                               general.tags arr[str,6]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv   7:                          general.languages arr[str,8]       = ["en", "de", "fr", "it", "pt", "hi", ...
+llama_model_loader: - kv   8:                          llama.block_count u32              = 28
+llama_model_loader: - kv   9:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  10:                     llama.embedding_length u32              = 3072
+llama_model_loader: - kv  11:                  llama.feed_forward_length u32              = 8192
+llama_model_loader: - kv  12:                 llama.attention.head_count u32              = 24
+llama_model_loader: - kv  13:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  14:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  15:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  16:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  17:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  18:                          general.file_type u32              = 15
+llama_model_loader: - kv  19:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  20:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  21:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  22:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  23:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  24:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  25:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  26:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  27:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  28:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  29:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   58 tensors
+llama_model_loader: - type q4_K:  168 tensors
+llama_model_loader: - type q6_K:   29 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_K - Medium
+print_info: file size   = 1.87 GiB (5.01 BPW) 
+load: special tokens cache size = 256
+load: token to piece cache size = 0.7999 MB
+print_info: arch             = llama
+print_info: vocab_only       = 1
+print_info: model type       = ?B
+print_info: model params     = 3.21 B
+print_info: general.name     = Llama 3.2 3B Instruct
+print_info: vocab type       = BPE
+print_info: n_vocab          = 128256
+print_info: n_merges         = 280147
+print_info: BOS token        = 128000 '<|begin_of_text|>'
+print_info: EOS token        = 128009 '<|eot_id|>'
+print_info: EOT token        = 128009 '<|eot_id|>'
+print_info: EOM token        = 128008 '<|eom_id|>'
+print_info: LF token         = 198 'Ċ'
+print_info: EOG token        = 128008 '<|eom_id|>'
+print_info: EOG token        = 128009 '<|eot_id|>'
+print_info: max token length = 256
+llama_model_load: vocab only - skipping tensors
+time=2025-07-22T04:38:01.326-04:00 level=INFO source=server.go:431 msg="starting llama server" cmd="/storage/pace-apps/manual/packages/ollama/0.9.0/bin/ollama runner --model /home/hice1/kshibata6/.ollama/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff --ctx-size 8192 --batch-size 512 --n-gpu-layers 29 --threads 64 --parallel 2 --port 41357"
+time=2025-07-22T04:38:01.327-04:00 level=INFO source=sched.go:483 msg="loaded runners" count=1
+time=2025-07-22T04:38:01.327-04:00 level=INFO source=server.go:591 msg="waiting for llama runner to start responding"
+time=2025-07-22T04:38:01.328-04:00 level=INFO source=server.go:625 msg="waiting for server to become available" status="llm server not responding"
+time=2025-07-22T04:38:01.349-04:00 level=INFO source=runner.go:815 msg="starting go runner"
+load_backend: loaded CPU backend from /storage/pace-apps/manual/packages/ollama/0.9.0/lib/ollama/libggml-cpu-icelake.so
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA H100 80GB HBM3, compute capability 9.0, VMM: yes
+load_backend: loaded CUDA backend from /storage/pace-apps/manual/packages/ollama/0.9.0/lib/ollama/cuda_v12/libggml-cuda.so
+time=2025-07-22T04:38:04.835-04:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.AVX512=1 CPU.0.AVX512_VBMI=1 CPU.0.AVX512_VNNI=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 CUDA.0.ARCHS=500,600,610,700,750,800,860,870,890,900,1200 CUDA.0.USE_GRAPHS=1 CUDA.0.PEER_MAX_BATCH_SIZE=128 compiler=cgo(gcc)
+time=2025-07-22T04:38:04.836-04:00 level=INFO source=runner.go:874 msg="Server listening on 127.0.0.1:41357"
+time=2025-07-22T04:38:05.087-04:00 level=INFO source=server.go:625 msg="waiting for server to become available" status="llm server loading model"
+llama_model_load_from_file_impl: using device CUDA0 (NVIDIA H100 80GB HBM3) - 80565 MiB free
+llama_model_loader: loaded meta data with 30 key-value pairs and 255 tensors from /home/hice1/kshibata6/.ollama/models/blobs/sha256-dde5aa3fc5ffc17176b5e8bdc82f587b24b2678c6c66101bf7da77af9f7ccdff (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.2 3B Instruct
+llama_model_loader: - kv   3:                           general.finetune str              = Instruct
+llama_model_loader: - kv   4:                           general.basename str              = Llama-3.2
+llama_model_loader: - kv   5:                         general.size_label str              = 3B
+llama_model_loader: - kv   6:                               general.tags arr[str,6]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv   7:                          general.languages arr[str,8]       = ["en", "de", "fr", "it", "pt", "hi", ...
+llama_model_loader: - kv   8:                          llama.block_count u32              = 28
+llama_model_loader: - kv   9:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  10:                     llama.embedding_length u32              = 3072
+llama_model_loader: - kv  11:                  llama.feed_forward_length u32              = 8192
+llama_model_loader: - kv  12:                 llama.attention.head_count u32              = 24
+llama_model_loader: - kv  13:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  14:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  15:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  16:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  17:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  18:                          general.file_type u32              = 15
+llama_model_loader: - kv  19:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  20:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  21:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  22:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  23:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  24:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  25:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  26:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  27:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  28:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  29:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   58 tensors
+llama_model_loader: - type q4_K:  168 tensors
+llama_model_loader: - type q6_K:   29 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_K - Medium
+print_info: file size   = 1.87 GiB (5.01 BPW) 
+load: special tokens cache size = 256
+load: token to piece cache size = 0.7999 MB
+print_info: arch             = llama
+print_info: vocab_only       = 0
+print_info: n_ctx_train      = 131072
+print_info: n_embd           = 3072
+print_info: n_layer          = 28
+print_info: n_head           = 24
+print_info: n_head_kv        = 8
+print_info: n_rot            = 128
+print_info: n_swa            = 0
+print_info: n_swa_pattern    = 1
+print_info: n_embd_head_k    = 128
+print_info: n_embd_head_v    = 128
+print_info: n_gqa            = 3
+print_info: n_embd_k_gqa     = 1024
+print_info: n_embd_v_gqa     = 1024
+print_info: f_norm_eps       = 0.0e+00
+print_info: f_norm_rms_eps   = 1.0e-05
+print_info: f_clamp_kqv      = 0.0e+00
+print_info: f_max_alibi_bias = 0.0e+00
+print_info: f_logit_scale    = 0.0e+00
+print_info: f_attn_scale     = 0.0e+00
+print_info: n_ff             = 8192
+print_info: n_expert         = 0
+print_info: n_expert_used    = 0
+print_info: causal attn      = 1
+print_info: pooling type     = 0
+print_info: rope type        = 0
+print_info: rope scaling     = linear
+print_info: freq_base_train  = 500000.0
+print_info: freq_scale_train = 1
+print_info: n_ctx_orig_yarn  = 131072
+print_info: rope_finetuned   = unknown
+print_info: ssm_d_conv       = 0
+print_info: ssm_d_inner      = 0
+print_info: ssm_d_state      = 0
+print_info: ssm_dt_rank      = 0
+print_info: ssm_dt_b_c_rms   = 0
+print_info: model type       = 3B
+print_info: model params     = 3.21 B
+print_info: general.name     = Llama 3.2 3B Instruct
+print_info: vocab type       = BPE
+print_info: n_vocab          = 128256
+print_info: n_merges         = 280147
+print_info: BOS token        = 128000 '<|begin_of_text|>'
+print_info: EOS token        = 128009 '<|eot_id|>'
+print_info: EOT token        = 128009 '<|eot_id|>'
+print_info: EOM token        = 128008 '<|eom_id|>'
+print_info: LF token         = 198 'Ċ'
+print_info: EOG token        = 128008 '<|eom_id|>'
+print_info: EOG token        = 128009 '<|eot_id|>'
+print_info: max token length = 256
+load_tensors: loading model tensors, this can take a while... (mmap = true)
+load_tensors: offloading 28 repeating layers to GPU
+load_tensors: offloading output layer to GPU
+load_tensors: offloaded 29/29 layers to GPU
+load_tensors:        CUDA0 model buffer size =  1918.35 MiB
+load_tensors:   CPU_Mapped model buffer size =   308.23 MiB
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 2
+llama_context: n_ctx         = 8192
+llama_context: n_ctx_per_seq = 4096
+llama_context: n_batch       = 1024
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = 0
+llama_context: freq_base     = 500000.0
+llama_context: freq_scale    = 1
+llama_context: n_ctx_per_seq (4096) < n_ctx_train (131072) -- the full capacity of the model will not be utilized
+llama_context:  CUDA_Host  output buffer size =     1.00 MiB
+llama_kv_cache_unified: kv_size = 8192, type_k = 'f16', type_v = 'f16', n_layer = 28, can_shift = 1, padding = 32
+llama_kv_cache_unified:      CUDA0 KV buffer size =   896.00 MiB
+llama_kv_cache_unified: KV self size  =  896.00 MiB, K (f16):  448.00 MiB, V (f16):  448.00 MiB
+llama_context:      CUDA0 compute buffer size =   424.00 MiB
+llama_context:  CUDA_Host compute buffer size =    22.01 MiB
+llama_context: graph nodes  = 958
+llama_context: graph splits = 2
+time=2025-07-22T04:38:17.111-04:00 level=INFO source=server.go:630 msg="llama runner started in 15.78 seconds"
+[GIN] 2025/07/22 - 04:38:23 | 200 | 23.206255122s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:23, 23.37s/it][GIN] 2025/07/22 - 04:38:24 | 200 | 24.643981288s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:24, 10.49s/it][GIN] 2025/07/22 - 04:38:28 | 200 | 28.394073513s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:28,  7.41s/it][GIN] 2025/07/22 - 04:38:29 | 200 |  5.020157201s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:29,  5.02s/it][GIN] 2025/07/22 - 04:38:42 | 200 | 18.826609498s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:42,  7.68s/it][GIN] 2025/07/22 - 04:38:44 | 200 | 15.634419325s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:44,  5.76s/it][GIN] 2025/07/22 - 04:39:00 | 200 | 17.698535349s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [01:00,  9.05s/it][GIN] 2025/07/22 - 04:39:15 | 200 | 45.438688521s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [01:15, 11.04s/it][GIN] 2025/07/22 - 04:39:18 | 200 | 33.682424709s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [01:18,  8.41s/it][GIN] 2025/07/22 - 04:39:32 | 200 | 32.586509766s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [01:32, 10.35s/it][GIN] 2025/07/22 - 04:39:42 | 200 | 27.168927974s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [01:42, 10.22s/it][GIN] 2025/07/22 - 04:39:44 | 200 | 11.684282303s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [01:44,  7.65s/it][GIN] 2025/07/22 - 04:39:47 | 200 | 29.438790151s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [01:47,  6.28s/it][GIN] 2025/07/22 - 04:39:48 | 200 |  5.305723378s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:48,  4.52s/it][GIN] 2025/07/22 - 04:39:50 | 200 |  2.832041798s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:50,  3.88s/it][GIN] 2025/07/22 - 04:39:52 | 200 |  8.023200839s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:52,  3.34s/it][GIN] 2025/07/22 - 04:39:52 | 200 |  2.343225942s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:52,  2.42s/it][GIN] 2025/07/22 - 04:39:54 | 200 |  6.661463784s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:54,  2.27s/it][GIN] 2025/07/22 - 04:39:57 | 200 |  4.523671329s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:57,  2.38s/it][GIN] 2025/07/22 - 04:39:57 | 200 |  5.046369921s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:57,  1.74s/it][GIN] 2025/07/22 - 04:40:02 | 200 |   5.54799968s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [02:02,  2.82s/it][GIN] 2025/07/22 - 04:40:03 | 200 |  8.918583268s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [02:03,  2.19s/it][GIN] 2025/07/22 - 04:40:17 | 200 | 20.319437436s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [02:18,  5.83s/it][GIN] 2025/07/22 - 04:40:20 | 200 | 17.225944026s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [02:20,  4.75s/it][GIN] 2025/07/22 - 04:40:21 | 200 |   3.32594217s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [02:21,  3.67s/it][GIN] 2025/07/22 - 04:40:24 | 200 | 20.827836033s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [02:24,  3.52s/it][GIN] 2025/07/22 - 04:40:26 | 200 |  5.843990835s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [02:26,  2.93s/it][GIN] 2025/07/22 - 04:40:30 | 200 |  5.861474892s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [02:30,  3.35s/it][GIN] 2025/07/22 - 04:40:32 | 200 | 11.567155194s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:33,  3.11s/it][GIN] 2025/07/22 - 04:40:39 | 200 |  8.590483571s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:39,  4.01s/it][GIN] 2025/07/22 - 04:40:42 | 200 |  9.780645442s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:42,  3.92s/it][GIN] 2025/07/22 - 04:40:42 | 200 | 16.699833145s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:42,  5.09s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:40:45 | 200 |  2.427755955s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:02,  2.53s/it][GIN] 2025/07/22 - 04:40:45 | 200 |  2.857571271s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:40:47 | 200 |    1.4473556s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 2it [00:04,  2.21s/it]LLMTableMergeProcessor running: 2it [00:04,  2.25s/it]
+LLM processors running:   0%|          | 0/2 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:40:49 | 200 |  1.777606004s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:40:50 | 200 |  3.276135802s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 1/2 [00:03<00:03,  3.34s/it]LLM processors running: 100%|██████████| 2/2 [00:03<00:00,  1.67s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:40:50 | 500 |   23.301467ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 04:40:50,802 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 04:40:50,802 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 36.43it/s]
+2025-07-22 04:40:51,798 [INFO] marker: Saved markdown to marker_output/2022 Q3 AAPL
+2025-07-22 04:40:51,798 [INFO] marker: Total time: 184.48785281181335
++ for file in docs/*.pdf
++ marker_single 'docs/2022 Q3 AMZN.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing layout:  20%|██        | 1/5 [00:00<00:03,  1.03it/s]Recognizing layout:  40%|████      | 2/5 [00:01<00:01,  1.56it/s]Recognizing layout:  60%|██████    | 3/5 [00:01<00:01,  1.82it/s]Recognizing layout:  80%|████████  | 4/5 [00:02<00:00,  1.87it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.39it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  1.97it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 96.07it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:02,  1.38s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.16s/it]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.12it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.01it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:41:41 | 200 | 10.977710943s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:11, 11.24s/it][GIN] 2025/07/22 - 04:41:50 | 200 | 19.073635947s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:19,  9.43s/it][GIN] 2025/07/22 - 04:41:50 | 200 | 19.429018354s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:19,  5.27s/it][GIN] 2025/07/22 - 04:41:53 | 200 | 11.866554603s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:23,  4.55s/it][GIN] 2025/07/22 - 04:42:01 | 200 | 11.063647519s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:30,  5.68s/it][GIN] 2025/07/22 - 04:42:04 | 200 | 10.555118824s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:33,  4.74s/it][GIN] 2025/07/22 - 04:42:13 | 200 | 12.171995391s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:43,  6.23s/it][GIN] 2025/07/22 - 04:42:14 | 200 |  9.591991829s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:43,  4.34s/it][GIN] 2025/07/22 - 04:42:16 | 200 | 26.333214465s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:45,  3.77s/it][GIN] 2025/07/22 - 04:42:26 | 200 | 12.490795834s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:55,  5.62s/it][GIN] 2025/07/22 - 04:42:26 | 200 | 10.004105624s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:55,  3.98s/it][GIN] 2025/07/22 - 04:42:26 | 200 | 12.660535208s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:56,  2.82s/it][GIN] 2025/07/22 - 04:42:27 | 200 |  469.958453ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:56,  2.07s/it][GIN] 2025/07/22 - 04:42:27 | 200 |  655.427539ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:56,  1.55s/it][GIN] 2025/07/22 - 04:42:33 | 200 |  7.210243671s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:02,  2.94s/it][GIN] 2025/07/22 - 04:42:35 | 200 |  8.262887754s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:04,  2.59s/it][GIN] 2025/07/22 - 04:42:45 | 200 | 18.398664423s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:15,  4.98s/it][GIN] 2025/07/22 - 04:42:49 | 200 |  14.33458059s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:19,  4.64s/it][GIN] 2025/07/22 - 04:42:52 | 200 |  6.515215717s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:21,  4.05s/it][GIN] 2025/07/22 - 04:42:54 | 200 | 20.765165441s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:23,  3.43s/it][GIN] 2025/07/22 - 04:42:54 | 200 |  4.966596406s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:24,  2.50s/it][GIN] 2025/07/22 - 04:43:08 | 200 |  14.22816383s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:38,  5.95s/it][GIN] 2025/07/22 - 04:43:16 | 200 | 21.592553705s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:45,  6.46s/it][GIN] 2025/07/22 - 04:43:22 | 200 | 13.991206758s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:52,  6.44s/it][GIN] 2025/07/22 - 04:43:24 | 200 | 31.529147744s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:53,  4.90s/it][GIN] 2025/07/22 - 04:43:30 | 200 |   7.48439308s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:59,  5.30s/it][GIN] 2025/07/22 - 04:43:31 | 200 |  7.116223765s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [02:00,  4.00s/it][GIN] 2025/07/22 - 04:43:35 | 200 |  5.018881565s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [02:04,  4.02s/it][GIN] 2025/07/22 - 04:43:36 | 200 |  4.857618675s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:05,  3.07s/it][GIN] 2025/07/22 - 04:43:40 | 200 | 24.076375068s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:09,  3.45s/it][GIN] 2025/07/22 - 04:43:41 | 200 |  6.326926086s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:11,  2.78s/it][GIN] 2025/07/22 - 04:43:44 | 200 |  3.778824037s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:13,  2.73s/it][GIN] 2025/07/22 - 04:43:50 | 200 | 14.462670045s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [02:20,  3.81s/it][GIN] 2025/07/22 - 04:43:54 | 200 | 12.653243983s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [02:23,  3.81s/it]LLMTableProcessor running: 34it [02:23,  4.23s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:43:55 | 200 |  1.252919379s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:01,  1.38s/it]LLMTableMergeProcessor running: 1it [00:01,  1.38s/it]
+LLM processors running:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:43:57 | 200 |  598.784768ms |       127.0.0.1 | POST     "/api/generate"
+LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it]LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:43:57 | 500 |     22.6643ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 04:43:57,811 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 04:43:57,811 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 37.53it/s]
+2025-07-22 04:44:00,521 [INFO] marker: Saved markdown to marker_output/2022 Q3 AMZN
+2025-07-22 04:44:00,521 [INFO] marker: Total time: 174.49546027183533
++ for file in docs/*.pdf
++ marker_single 'docs/2022 Q3 INTC.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/6 [00:00<?, ?it/s]Recognizing layout:  17%|█▋        | 1/6 [00:00<00:04,  1.06it/s]Recognizing layout:  33%|███▎      | 2/6 [00:01<00:02,  1.51it/s]Recognizing layout:  50%|█████     | 3/6 [00:01<00:01,  1.82it/s]Recognizing layout:  67%|██████▋   | 4/6 [00:02<00:01,  1.82it/s]Recognizing layout:  83%|████████▎ | 5/6 [00:02<00:00,  2.03it/s]Recognizing layout: 100%|██████████| 6/6 [00:02<00:00,  2.52it/s]Recognizing layout: 100%|██████████| 6/6 [00:02<00:00,  2.02it/s]
+Running OCR Error Detection:   0%|          | 0/5 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 5/5 [00:00<00:00, 90.15it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes:   0%|          | 0/1 [00:00<?, ?it/s]Detecting bboxes: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]Detecting bboxes: 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]
+Recognizing Text:   0%|          | 0/2 [00:00<?, ?it/s]Recognizing Text:  50%|█████     | 1/2 [00:00<00:00,  2.28it/s]Recognizing Text: 100%|██████████| 2/2 [00:00<00:00,  3.83it/s]Recognizing Text: 100%|██████████| 2/2 [00:00<00:00,  3.47it/s]
+Recognizing tables:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing tables:  25%|██▌       | 1/4 [00:01<00:03,  1.21s/it]Recognizing tables:  50%|█████     | 2/4 [00:02<00:02,  1.08s/it]Recognizing tables:  75%|███████▌  | 3/4 [00:03<00:01,  1.13s/it]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.13it/s]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.03it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:44:37 | 200 |  1.729906892s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:01,  1.94s/it][GIN] 2025/07/22 - 04:44:38 | 200 |  2.594418725s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:02,  1.30s/it][GIN] 2025/07/22 - 04:44:47 | 200 | 10.513790577s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:12,  5.15s/it][GIN] 2025/07/22 - 04:44:53 | 200 | 15.330238518s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:18,  5.34s/it][GIN] 2025/07/22 - 04:44:56 | 200 | 20.750074635s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:21,  4.45s/it][GIN] 2025/07/22 - 04:45:06 | 200 | 18.689199752s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:31,  6.45s/it][GIN] 2025/07/22 - 04:45:15 | 200 | 21.931686236s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:40,  7.26s/it][GIN] 2025/07/22 - 04:45:26 | 200 | 29.535998886s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:50,  8.27s/it][GIN] 2025/07/22 - 04:45:37 | 200 | 30.855305348s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [01:02,  9.31s/it][GIN] 2025/07/22 - 04:45:39 | 200 | 13.722469239s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [01:04,  7.10s/it][GIN] 2025/07/22 - 04:45:41 | 200 | 25.318401193s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [01:05,  5.28s/it][GIN] 2025/07/22 - 04:45:43 | 200 |  6.000184601s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [01:08,  4.50s/it][GIN] 2025/07/22 - 04:45:46 | 200 |  5.601880654s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [01:11,  4.02s/it][GIN] 2025/07/22 - 04:45:50 | 200 |  7.232387159s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:15,  4.12s/it][GIN] 2025/07/22 - 04:45:53 | 200 | 13.234123365s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:17,  3.52s/it][GIN] 2025/07/22 - 04:45:53 | 200 |  2.361470559s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:17,  2.54s/it][GIN] 2025/07/22 - 04:45:53 | 200 |  560.041847ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:18,  1.87s/it][GIN] 2025/07/22 - 04:45:55 | 200 |  8.726965036s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:20,  1.82s/it][GIN] 2025/07/22 - 04:45:56 | 200 |  2.708971902s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:21,  1.57s/it][GIN] 2025/07/22 - 04:46:04 | 200 |  8.699563579s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:28,  3.43s/it][GIN] 2025/07/22 - 04:46:06 | 200 | 10.177168515s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:31,  3.14s/it][GIN] 2025/07/22 - 04:46:12 | 200 |  8.385396253s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:37,  3.99s/it][GIN] 2025/07/22 - 04:46:13 | 200 | 20.097853961s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:38,  3.09s/it][GIN] 2025/07/22 - 04:46:14 | 200 |  1.768903763s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:39,  2.41s/it][GIN] 2025/07/22 - 04:46:20 | 200 |  6.712635323s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:44,  3.46s/it][GIN] 2025/07/22 - 04:46:20 | 200 |  6.104350869s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:45,  2.49s/it][GIN] 2025/07/22 - 04:46:25 | 200 | 18.456982912s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:49,  3.12s/it][GIN] 2025/07/22 - 04:46:28 | 200 |  8.318941904s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:53,  3.25s/it][GIN] 2025/07/22 - 04:46:38 | 200 | 17.909640824s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:03,  5.25s/it][GIN] 2025/07/22 - 04:46:44 | 200 |  15.62822279s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:08,  5.40s/it][GIN] 2025/07/22 - 04:46:55 | 200 | 16.600156324s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:19,  7.05s/it][GIN] 2025/07/22 - 04:47:14 | 200 | 29.993562364s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:39, 10.69s/it][GIN] 2025/07/22 - 04:47:15 | 200 | 20.213534543s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [02:40,  7.82s/it][GIN] 2025/07/22 - 04:47:16 | 200 |  1.619325607s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [02:40,  5.63s/it][GIN] 2025/07/22 - 04:47:20 | 200 |  5.211017455s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [02:45,  5.36s/it][GIN] 2025/07/22 - 04:47:26 | 200 | 10.778717998s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [02:51,  5.57s/it][GIN] 2025/07/22 - 04:47:32 | 200 | 11.983030253s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [02:57,  5.68s/it][GIN] 2025/07/22 - 04:47:36 | 200 |  9.412961937s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [03:00,  5.03s/it][GIN] 2025/07/22 - 04:47:41 | 200 |  8.858204942s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [03:06,  5.16s/it][GIN] 2025/07/22 - 04:48:07 | 200 | 30.616310904s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [03:31, 11.19s/it][GIN] 2025/07/22 - 04:48:12 | 200 | 30.926095549s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [03:37,  9.55s/it][GIN] 2025/07/22 - 04:48:17 | 200 |  9.992197907s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [03:41,  7.98s/it][GIN] 2025/07/22 - 04:48:29 | 200 | 16.715046052s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 43it [03:54,  9.34s/it][GIN] 2025/07/22 - 04:48:37 | 200 | 20.140537856s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 44it [04:01,  8.84s/it][GIN] 2025/07/22 - 04:48:41 | 200 | 11.760645264s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 45it [04:06,  7.42s/it][GIN] 2025/07/22 - 04:55:04 | 200 |         8m38s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 04:55:04,161 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 1 column 145 (char 144)
+LLMTableProcessor running: 46it [10:28, 120.03s/it]LLMTableProcessor running: 46it [10:28, 13.67s/it] 
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:55:07 | 200 |  2.733204392s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:10 | 200 |  2.999158596s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:05,  5.94s/it]LLMTableMergeProcessor running: 1it [00:05,  5.94s/it]
+LLM processors running:   0%|          | 0/24 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:55:10 | 200 |  531.288102ms |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:   4%|▍         | 1/24 [00:00<00:14,  1.60it/s][GIN] 2025/07/22 - 04:55:11 | 200 |  1.248579452s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:   8%|▊         | 2/24 [00:01<00:14,  1.47it/s][GIN] 2025/07/22 - 04:55:12 | 200 |  2.131290311s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:13 | 200 |   3.26458685s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  12%|█▎        | 3/24 [00:03<00:27,  1.29s/it][GIN] 2025/07/22 - 04:55:14 | 200 |  3.271481106s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  21%|██        | 5/24 [00:04<00:17,  1.09it/s][GIN] 2025/07/22 - 04:55:15 | 200 |  1.727061427s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:16 | 200 |  1.231284902s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:17 | 200 |  4.631121396s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  25%|██▌       | 6/24 [00:07<00:26,  1.45s/it][GIN] 2025/07/22 - 04:55:19 | 200 |  4.221789867s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  38%|███▊      | 9/24 [00:09<00:15,  1.00s/it][GIN] 2025/07/22 - 04:55:19 | 200 |  3.639650931s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  42%|████▏     | 10/24 [00:09<00:11,  1.20it/s][GIN] 2025/07/22 - 04:55:20 | 200 |  2.815664452s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  46%|████▌     | 11/24 [00:10<00:10,  1.24it/s][GIN] 2025/07/22 - 04:55:20 | 200 |  1.256368468s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 12/24 [00:10<00:08,  1.44it/s][GIN] 2025/07/22 - 04:55:21 | 200 |  751.346353ms |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:22 | 200 |  2.336015961s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  54%|█████▍    | 13/24 [00:11<00:09,  1.19it/s][GIN] 2025/07/22 - 04:55:22 | 200 |  1.651981571s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  62%|██████▎   | 15/24 [00:12<00:05,  1.76it/s][GIN] 2025/07/22 - 04:55:24 | 200 |  2.057894383s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:25 | 200 |  2.846178548s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:26 | 200 |   4.87538716s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  67%|██████▋   | 16/24 [00:15<00:10,  1.28s/it][GIN] 2025/07/22 - 04:55:26 | 200 |  2.219028151s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  79%|███████▉  | 19/24 [00:16<00:03,  1.46it/s][GIN] 2025/07/22 - 04:55:26 | 200 |  1.227618031s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  83%|████████▎ | 20/24 [00:16<00:02,  1.69it/s][GIN] 2025/07/22 - 04:55:27 | 200 |  1.309613286s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  88%|████████▊ | 21/24 [00:17<00:01,  1.55it/s][GIN] 2025/07/22 - 04:55:27 | 200 |  1.070796574s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:55:27 | 200 |  1.637248519s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  92%|█████████▏| 22/24 [00:17<00:01,  1.57it/s][GIN] 2025/07/22 - 04:55:28 | 200 |  1.193590687s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running: 100%|██████████| 24/24 [00:18<00:00,  2.00it/s]LLM processors running: 100%|██████████| 24/24 [00:18<00:00,  1.31it/s]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 04:55:28 | 500 |   25.104892ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 04:55:28,653 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 04:55:28,653 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 34.31it/s]
+2025-07-22 04:55:30,201 [INFO] marker: Saved markdown to marker_output/2022 Q3 INTC
+2025-07-22 04:55:30,201 [INFO] marker: Total time: 674.2479674816132
++ for file in docs/*.pdf
++ marker_single 'docs/2022 Q3 MSFT.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/7 [00:00<?, ?it/s]Recognizing layout:  14%|█▍        | 1/7 [00:00<00:05,  1.02it/s]Recognizing layout:  29%|██▊       | 2/7 [00:01<00:03,  1.54it/s]Recognizing layout:  43%|████▎     | 3/7 [00:01<00:02,  1.78it/s]Recognizing layout:  57%|█████▋    | 4/7 [00:02<00:01,  1.99it/s]Recognizing layout:  71%|███████▏  | 5/7 [00:02<00:00,  2.22it/s]Recognizing layout:  86%|████████▌ | 6/7 [00:03<00:00,  2.24it/s]Recognizing layout: 100%|██████████| 7/7 [00:03<00:00,  2.40it/s]Recognizing layout: 100%|██████████| 7/7 [00:03<00:00,  2.05it/s]
+Running OCR Error Detection:   0%|          | 0/6 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 6/6 [00:00<00:00, 104.89it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing tables:  20%|██        | 1/5 [00:00<00:03,  1.12it/s]Recognizing tables:  40%|████      | 2/5 [00:01<00:02,  1.35it/s]Recognizing tables:  60%|██████    | 3/5 [00:02<00:01,  1.12it/s]Recognizing tables:  80%|████████  | 4/5 [00:03<00:00,  1.34it/s]Recognizing tables: 100%|██████████| 5/5 [00:03<00:00,  1.84it/s]Recognizing tables: 100%|██████████| 5/5 [00:03<00:00,  1.51it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 04:56:22 | 200 |  1.520946083s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:01,  1.74s/it][GIN] 2025/07/22 - 04:56:28 | 200 |  7.782154177s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:08,  2.80s/it][GIN] 2025/07/22 - 04:56:28 | 200 |  7.764982863s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:56:29 | 200 |  6.853832042s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:08,  1.50s/it][GIN] 2025/07/22 - 04:56:29 | 200 |  1.150363223s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:09,  1.30s/it][GIN] 2025/07/22 - 04:56:37 | 200 |  8.641825474s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:17,  3.15s/it][GIN] 2025/07/22 - 04:56:40 | 200 | 11.872667729s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:20,  3.04s/it][GIN] 2025/07/22 - 04:56:41 | 200 |  3.221310963s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:20,  2.31s/it][GIN] 2025/07/22 - 04:56:44 | 200 |  3.463812578s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:23,  2.51s/it][GIN] 2025/07/22 - 04:56:44 | 200 |  3.248882995s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:23,  1.85s/it][GIN] 2025/07/22 - 04:56:44 | 200 |  710.610835ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:24,  1.46s/it][GIN] 2025/07/22 - 04:56:46 | 200 | 16.261214965s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:25,  1.40s/it][GIN] 2025/07/22 - 04:56:58 | 200 | 13.556821035s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:38,  4.67s/it][GIN] 2025/07/22 - 04:57:02 | 200 | 17.718298877s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 04:57:02 | 200 | 15.990249811s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [00:41,  4.38s/it][GIN] 2025/07/22 - 04:57:02 | 200 |   418.20679ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [00:42,  2.48s/it][GIN] 2025/07/22 - 04:57:06 | 200 |  7.969431792s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [00:46,  2.81s/it][GIN] 2025/07/22 - 04:57:09 | 200 |  6.573480007s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [00:48,  2.80s/it][GIN] 2025/07/22 - 04:57:10 | 200 |  3.509159996s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [00:49,  2.25s/it][GIN] 2025/07/22 - 04:57:13 | 200 |  4.086139771s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [00:52,  2.56s/it][GIN] 2025/07/22 - 04:57:14 | 200 | 12.223216417s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [00:54,  2.15s/it][GIN] 2025/07/22 - 04:57:15 | 200 |  5.564298402s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [00:55,  1.85s/it][GIN] 2025/07/22 - 04:57:15 | 200 |  2.544543945s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [00:55,  1.40s/it][GIN] 2025/07/22 - 04:57:20 | 200 |  6.350012267s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:00,  2.44s/it][GIN] 2025/07/22 - 04:57:21 | 200 |  5.386576084s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:00,  1.77s/it][GIN] 2025/07/22 - 04:57:23 | 200 |  2.275877216s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:02,  1.88s/it][GIN] 2025/07/22 - 04:57:25 | 200 |  9.012668998s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:04,  1.86s/it][GIN] 2025/07/22 - 04:57:25 | 200 |  2.638832488s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [01:05,  1.56s/it][GIN] 2025/07/22 - 04:57:26 | 200 |  1.676148834s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [01:06,  1.35s/it][GIN] 2025/07/22 - 04:57:28 | 200 |  2.702156881s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [01:08,  1.51s/it][GIN] 2025/07/22 - 04:57:31 | 200 |  4.704497148s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [01:11,  1.91s/it][GIN] 2025/07/22 - 04:57:34 | 200 |  5.413377665s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [01:13,  2.12s/it][GIN] 2025/07/22 - 04:57:37 | 200 | 16.655591232s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [01:17,  2.61s/it][GIN] 2025/07/22 - 04:57:38 | 200 |  4.239739845s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [01:17,  1.98s/it][GIN] 2025/07/22 - 04:57:39 | 200 |  1.532348424s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [01:18,  1.70s/it][GIN] 2025/07/22 - 04:57:41 | 200 | 10.358755378s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [01:21,  1.95s/it][GIN] 2025/07/22 - 04:57:47 | 200 |  8.970777412s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [01:26,  2.99s/it][GIN] 2025/07/22 - 04:57:51 | 200 | 12.440434797s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [01:31,  3.47s/it][GIN] 2025/07/22 - 04:57:53 | 200 |  6.572128506s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [01:33,  3.03s/it][GIN] 2025/07/22 - 04:57:54 | 200 |  2.231081026s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [01:33,  2.19s/it][GIN] 2025/07/22 - 04:57:54 | 200 |  377.374386ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [01:33,  1.59s/it][GIN] 2025/07/22 - 04:57:56 | 200 |  1.917256575s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 43it [01:35,  1.64s/it][GIN] 2025/07/22 - 04:57:56 | 200 | 14.515898999s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 44it [01:36,  1.26s/it][GIN] 2025/07/22 - 04:57:59 | 200 |  3.420045517s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 45it [01:39,  1.81s/it][GIN] 2025/07/22 - 04:58:04 | 200 |  8.046278885s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 46it [01:44,  2.76s/it][GIN] 2025/07/22 - 04:58:05 | 200 |  5.713742584s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 47it [01:44,  2.17s/it][GIN] 2025/07/22 - 04:58:06 | 200 | 11.927172566s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 48it [01:45,  1.82s/it][GIN] 2025/07/22 - 04:58:07 | 200 |  2.985055179s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 49it [01:47,  1.64s/it][GIN] 2025/07/22 - 04:58:08 | 200 |  3.207717538s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 50it [01:48,  1.45s/it][GIN] 2025/07/22 - 04:58:09 | 200 |  3.296102977s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 51it [01:49,  1.35s/it][GIN] 2025/07/22 - 04:58:13 | 200 |  5.708574524s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 52it [01:52,  2.03s/it][GIN] 2025/07/22 - 04:58:16 | 200 |  7.412144891s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 53it [01:55,  2.24s/it][GIN] 2025/07/22 - 04:58:21 | 200 |  7.650925501s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 54it [02:00,  3.06s/it][GIN] 2025/07/22 - 04:58:23 | 200 |   7.88808676s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 55it [02:03,  3.03s/it][GIN] 2025/07/22 - 04:58:25 | 200 |  4.515842366s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 56it [02:05,  2.59s/it][GIN] 2025/07/22 - 04:58:28 | 200 |  4.675155851s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 57it [02:08,  2.75s/it][GIN] 2025/07/22 - 05:05:59 | 200 |         7m49s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:05:59,022 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 3 column 19 (char 477)
+LLMTableProcessor running: 58it [09:38, 137.03s/it]LLMTableProcessor running: 58it [09:38,  9.98s/it] 
+LLMTableMergeProcessor running: 0it [00:00, ?it/s]LLMTableMergeProcessor running: 0it [00:00, ?it/s]
+LLM processors running:   0%|          | 0/3 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:06:02 | 200 |  1.040272145s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:06:03 | 200 |  2.045471889s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  33%|███▎      | 1/3 [00:03<00:06,  3.23s/it][GIN] 2025/07/22 - 05:06:04 | 200 |   2.48852416s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  67%|██████▋   | 2/3 [00:03<00:01,  1.59s/it]LLM processors running: 100%|██████████| 3/3 [00:03<00:00,  1.22s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:06:04 | 500 |   24.356788ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:06:04,360 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:06:04,360 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 34.53it/s]
+2025-07-22 05:06:07,258 [INFO] marker: Saved markdown to marker_output/2022 Q3 MSFT
+2025-07-22 05:06:07,258 [INFO] marker: Total time: 621.3078417778015
++ for file in docs/*.pdf
++ marker_single 'docs/2022 Q3 NVDA.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing layout:  20%|██        | 1/5 [00:00<00:03,  1.07it/s]Recognizing layout:  40%|████      | 2/5 [00:01<00:01,  1.62it/s]Recognizing layout:  60%|██████    | 3/5 [00:01<00:01,  1.79it/s]Recognizing layout:  80%|████████  | 4/5 [00:02<00:00,  2.04it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.56it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.07it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 84.10it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing tables:  25%|██▌       | 1/4 [00:01<00:03,  1.24s/it]Recognizing tables:  50%|█████     | 2/4 [00:02<00:02,  1.04s/it]Recognizing tables:  75%|███████▌  | 3/4 [00:03<00:01,  1.00s/it]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.42it/s]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.20it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:06:45 | 200 |  1.605547294s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:01,  1.76s/it][GIN] 2025/07/22 - 05:06:47 | 200 |  3.200689677s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:03,  1.70s/it][GIN] 2025/07/22 - 05:06:48 | 200 |  2.513799451s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:04,  1.32s/it][GIN] 2025/07/22 - 05:06:55 | 200 | 11.571933156s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:11,  3.78s/it][GIN] 2025/07/22 - 05:07:01 | 200 |  13.85006691s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:17,  4.41s/it][GIN] 2025/07/22 - 05:07:02 | 200 | 13.678963044s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:18,  3.16s/it][GIN] 2025/07/22 - 05:07:02 | 200 |  6.703161104s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:18,  2.30s/it][GIN] 2025/07/22 - 05:07:04 | 200 |  2.475311307s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:20,  2.24s/it][GIN] 2025/07/22 - 05:07:07 | 200 |  4.915634173s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:23,  2.43s/it][GIN] 2025/07/22 - 05:07:10 | 200 |  5.682715995s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:26,  2.57s/it][GIN] 2025/07/22 - 05:07:13 | 200 |  6.304074596s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:29,  2.84s/it][GIN] 2025/07/22 - 05:07:18 | 200 |   7.86932401s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:34,  3.33s/it][GIN] 2025/07/22 - 05:07:35 | 200 | 34.135554417s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:51,  7.54s/it][GIN] 2025/07/22 - 05:07:42 | 200 | 23.638201895s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:58,  7.22s/it][GIN] 2025/07/22 - 05:07:49 | 200 | 13.460519641s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:05,  7.16s/it][GIN] 2025/07/22 - 05:07:49 | 200 |  7.412552412s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:05,  5.13s/it][GIN] 2025/07/22 - 05:07:49 | 200 |  757.447586ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:05,  3.70s/it][GIN] 2025/07/22 - 05:07:52 | 200 |  3.304354942s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:08,  3.48s/it][GIN] 2025/07/22 - 05:08:01 | 200 | 10.981543148s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:16,  4.88s/it][GIN] 2025/07/22 - 05:08:07 | 200 | 14.859066943s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:23,  5.44s/it][GIN] 2025/07/22 - 05:08:11 | 200 | 10.891186409s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:27,  5.06s/it][GIN] 2025/07/22 - 05:08:14 | 200 |  6.636311101s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:30,  4.30s/it][GIN] 2025/07/22 - 05:08:18 | 200 |  6.261332618s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:34,  4.15s/it][GIN] 2025/07/22 - 05:08:21 | 200 |  7.329295819s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:37,  3.97s/it][GIN] 2025/07/22 - 05:08:24 | 200 |  6.606430739s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:40,  3.70s/it][GIN] 2025/07/22 - 05:08:25 | 200 |  4.061890669s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:41,  2.90s/it][GIN] 2025/07/22 - 05:08:42 | 200 | 17.444124401s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:58,  6.99s/it][GIN] 2025/07/22 - 05:08:42 | 200 | 16.843919788s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:58,  4.99s/it][GIN] 2025/07/22 - 05:08:45 | 200 |  3.019558952s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:01,  4.31s/it][GIN] 2025/07/22 - 05:08:53 | 200 | 10.867950151s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:09,  5.49s/it][GIN] 2025/07/22 - 05:09:02 | 200 | 16.588177222s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:18,  6.36s/it][GIN] 2025/07/22 - 05:09:09 | 200 | 15.420582858s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:25,  6.57s/it][GIN] 2025/07/22 - 05:09:13 | 200 | 11.403080337s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [02:29,  5.92s/it][GIN] 2025/07/22 - 05:09:30 | 200 | 21.132982811s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [02:46,  9.18s/it][GIN] 2025/07/22 - 05:09:43 | 200 | 29.770132396s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [02:59, 10.35s/it][GIN] 2025/07/22 - 05:09:49 | 200 | 18.778051661s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [03:05,  8.97s/it][GIN] 2025/07/22 - 05:09:50 | 200 |  6.873432245s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [03:06,  6.63s/it][GIN] 2025/07/22 - 05:09:56 | 200 |  7.716088119s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [03:12,  6.62s/it][GIN] 2025/07/22 - 05:09:57 | 200 |  7.412109426s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [03:13,  4.89s/it][GIN] 2025/07/22 - 05:10:01 | 200 |  4.041630415s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [03:16,  4.39s/it][GIN] 2025/07/22 - 05:10:05 | 200 |   7.84403423s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [03:21,  4.47s/it][GIN] 2025/07/22 - 05:10:14 | 200 | 13.207516776s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [03:30,  5.73s/it][GIN] 2025/07/22 - 05:16:47 | 200 |         9m33s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:16:47,287 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 1 column 217 (char 216)
+LLMTableProcessor running: 43it [10:03, 121.88s/it]LLMTableProcessor running: 43it [10:03, 14.03s/it] 
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:16:50 | 200 |   3.27059001s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:03,  3.45s/it]LLMTableMergeProcessor running: 1it [00:03,  3.45s/it]
+LLM processors running:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:16:52 | 200 |  701.187824ms |       127.0.0.1 | POST     "/api/generate"
+LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.17s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:16:52 | 500 |   24.132332ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:16:52,578 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:16:52,579 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 35.71it/s]
+2025-07-22 05:16:54,717 [INFO] marker: Saved markdown to marker_output/2022 Q3 NVDA
+2025-07-22 05:16:54,717 [INFO] marker: Total time: 633.1273412704468
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q1 AAPL.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing layout:  25%|██▌       | 1/4 [00:00<00:02,  1.07it/s]Recognizing layout:  50%|█████     | 2/4 [00:01<00:01,  1.52it/s]Recognizing layout:  75%|███████▌  | 3/4 [00:01<00:00,  1.95it/s]Recognizing layout: 100%|██████████| 4/4 [00:02<00:00,  2.16it/s]Recognizing layout: 100%|██████████| 4/4 [00:02<00:00,  1.89it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 84.72it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:02,  1.05s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:01<00:00,  1.18it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.62it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.43it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:17:25 | 200 |  542.687412ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:00,  1.19it/s][GIN] 2025/07/22 - 05:17:25 | 200 |  816.824456ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:01,  1.96it/s][GIN] 2025/07/22 - 05:17:26 | 200 |  1.147112316s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:02,  1.39it/s][GIN] 2025/07/22 - 05:17:28 | 200 |  4.107763281s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:04,  1.34s/it][GIN] 2025/07/22 - 05:17:34 | 200 |  8.757640465s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:09,  2.87s/it][GIN] 2025/07/22 - 05:17:46 | 200 | 19.801523119s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:22,  6.00s/it][GIN] 2025/07/22 - 05:17:50 | 200 | 21.519388228s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:26,  5.34s/it][GIN] 2025/07/22 - 05:17:55 | 200 |  9.344166731s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:31,  5.36s/it][GIN] 2025/07/22 - 05:18:03 | 200 | 13.130607233s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:39,  6.11s/it][GIN] 2025/07/22 - 05:18:14 | 200 | 18.012195591s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:49,  7.42s/it][GIN] 2025/07/22 - 05:18:32 | 200 | 28.725259636s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [01:07, 10.80s/it][GIN] 2025/07/22 - 05:18:34 | 200 | 20.366648331s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [01:09,  8.10s/it][GIN] 2025/07/22 - 05:18:36 | 200 |  4.309621783s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [01:12,  6.38s/it][GIN] 2025/07/22 - 05:18:40 | 200 |  5.948735097s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:15,  5.53s/it][GIN] 2025/07/22 - 05:18:42 | 200 |  5.488605359s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:17,  4.45s/it][GIN] 2025/07/22 - 05:18:42 | 200 |  2.133680962s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:18,  3.17s/it][GIN] 2025/07/22 - 05:18:47 | 200 |  4.995945427s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:22,  3.66s/it][GIN] 2025/07/22 - 05:18:47 | 200 |   5.13177142s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:23,  2.67s/it][GIN] 2025/07/22 - 05:18:53 | 200 |   6.41003968s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:29,  3.70s/it][GIN] 2025/07/22 - 05:19:00 | 200 | 12.485960224s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:35,  4.51s/it][GIN] 2025/07/22 - 05:19:02 | 200 |  8.636425033s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:37,  3.83s/it][GIN] 2025/07/22 - 05:19:04 | 200 |  4.588108792s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:40,  3.39s/it][GIN] 2025/07/22 - 05:19:14 | 200 | 12.135643437s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:50,  5.33s/it][GIN] 2025/07/22 - 05:19:16 | 200 | 11.833350717s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:52,  4.34s/it][GIN] 2025/07/22 - 05:19:19 | 200 |  5.220405646s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:55,  4.01s/it][GIN] 2025/07/22 - 05:19:22 | 200 |  6.219156914s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:58,  3.71s/it][GIN] 2025/07/22 - 05:19:25 | 200 |   5.85566746s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [02:01,  3.46s/it][GIN] 2025/07/22 - 05:19:29 | 200 |  6.542363584s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [02:05,  3.53s/it][GIN] 2025/07/22 - 05:19:31 | 200 |  5.760012413s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:07,  3.10s/it][GIN] 2025/07/22 - 05:19:36 | 200 |   7.17085619s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:12,  3.71s/it][GIN] 2025/07/22 - 05:19:43 | 200 | 11.814036756s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:18,  4.62s/it][GIN] 2025/07/22 - 05:26:38 | 200 |          9m4s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:26:38,891 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 3 column 21 (char 311)
+LLMTableProcessor running: 32it [09:14, 127.84s/it]LLMTableProcessor running: 32it [09:14, 17.32s/it] 
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:26:41 | 200 |  2.589804348s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:02,  2.71s/it][GIN] 2025/07/22 - 05:26:43 | 200 |   3.97346174s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:26:46 | 200 |   3.20864091s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 2it [00:07,  3.88s/it]LLMTableMergeProcessor running: 2it [00:07,  3.70s/it]
+LLM processors running:   0%|          | 0/2 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:26:47 | 200 |  563.099826ms |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:26:47 | 200 |  1.069198405s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 1/2 [00:01<00:01,  1.36s/it]LLM processors running: 100%|██████████| 2/2 [00:01<00:00,  1.47it/s]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:26:48 | 500 |   24.162698ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:26:48,071 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:26:48,071 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 35.58it/s]
+2025-07-22 05:26:49,238 [INFO] marker: Saved markdown to marker_output/2023 Q1 AAPL
+2025-07-22 05:26:49,238 [INFO] marker: Total time: 579.6726944446564
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q1 AMZN.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing layout:  20%|██        | 1/5 [00:00<00:03,  1.03it/s]Recognizing layout:  40%|████      | 2/5 [00:01<00:01,  1.58it/s]Recognizing layout:  60%|██████    | 3/5 [00:01<00:01,  1.79it/s]Recognizing layout:  80%|████████  | 4/5 [00:02<00:00,  1.88it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.21it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  1.89it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 83.61it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:03,  1.79s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.20s/it]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.19it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.00it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:27:32 | 200 |  819.568279ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:01,  1.10s/it][GIN] 2025/07/22 - 05:27:32 | 200 |  1.106297834s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:01,  1.64it/s][GIN] 2025/07/22 - 05:27:41 | 200 |  8.846174709s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:10,  4.28s/it][GIN] 2025/07/22 - 05:27:51 | 200 | 19.703290664s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:20,  6.54s/it][GIN] 2025/07/22 - 05:28:03 | 200 | 22.335972228s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:32,  8.65s/it][GIN] 2025/07/22 - 05:28:07 | 200 | 15.611122051s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:35,  6.81s/it][GIN] 2025/07/22 - 05:28:07 | 200 | 34.411906319s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:35,  4.67s/it][GIN] 2025/07/22 - 05:28:09 | 200 |  5.730089129s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:38,  3.90s/it][GIN] 2025/07/22 - 05:28:11 | 200 |  4.241375046s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:39,  3.23s/it][GIN] 2025/07/22 - 05:28:13 | 200 |  3.728802944s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:41,  2.85s/it][GIN] 2025/07/22 - 05:28:15 | 200 |  4.433002553s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:44,  2.73s/it][GIN] 2025/07/22 - 05:28:23 | 200 |  9.742368886s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:51,  4.13s/it][GIN] 2025/07/22 - 05:28:27 | 200 |  11.09182125s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:55,  4.03s/it][GIN] 2025/07/22 - 05:28:35 | 200 |  12.58127184s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:04,  5.49s/it][GIN] 2025/07/22 - 05:28:52 | 200 | 25.240511049s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:20,  8.79s/it][GIN] 2025/07/22 - 05:28:59 | 200 | 23.235461318s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:27,  8.21s/it][GIN] 2025/07/22 - 05:29:03 | 200 | 11.382970619s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:32,  7.11s/it][GIN] 2025/07/22 - 05:29:05 | 200 |  6.350151808s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:34,  5.52s/it][GIN] 2025/07/22 - 05:29:13 | 200 |  9.768863055s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:42,  6.26s/it][GIN] 2025/07/22 - 05:29:22 | 200 | 16.456919857s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:50,  6.95s/it][GIN] 2025/07/22 - 05:29:23 | 200 | 10.263844865s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:52,  5.40s/it][GIN] 2025/07/22 - 05:29:36 | 200 | 14.726693683s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [02:05,  7.68s/it][GIN] 2025/07/22 - 05:29:42 | 200 | 18.887392124s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [02:11,  7.15s/it][GIN] 2025/07/22 - 05:29:51 | 200 | 14.627462705s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [02:20,  7.64s/it][GIN] 2025/07/22 - 05:29:53 | 200 | 10.965178513s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [02:22,  6.01s/it][GIN] 2025/07/22 - 05:40:57 | 200 |        12m49s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:40:57,076 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 1 column 721 (char 720)
+LLMTableProcessor running: 26it [13:25, 203.20s/it][GIN] 2025/07/22 - 05:41:02 | 200 |         11m8s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [13:30, 143.81s/it][GIN] 2025/07/22 - 05:41:08 | 200 | 11.017255694s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [13:36, 102.42s/it][GIN] 2025/07/22 - 05:41:14 | 200 | 12.296810608s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [13:43, 73.65s/it] [GIN] 2025/07/22 - 05:41:18 | 200 | 10.649397321s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [13:47, 52.80s/it][GIN] 2025/07/22 - 05:41:19 | 200 |  5.060573095s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [13:48, 37.24s/it][GIN] 2025/07/22 - 05:41:20 | 200 |  1.579696505s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [13:48, 26.29s/it][GIN] 2025/07/22 - 05:42:11 | 200 |        12m19s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:42:11,247 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 1 column 421 (char 420)
+LLMTableProcessor running: 33it [14:39, 33.62s/it]LLMTableProcessor running: 33it [14:39, 26.66s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s]LLMTableMergeProcessor running: 0it [00:00, ?it/s]
+LLM processors running:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:42:13 | 200 |   493.38185ms |       127.0.0.1 | POST     "/api/generate"
+LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it]LLM processors running: 100%|██████████| 1/1 [00:01<00:00,  1.15s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:42:13 | 500 |   23.563829ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:42:13,353 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:42:13,353 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 36.01it/s]
+2025-07-22 05:42:15,024 [INFO] marker: Saved markdown to marker_output/2023 Q1 AMZN
+2025-07-22 05:42:15,024 [INFO] marker: Total time: 910.7320241928101
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q1 INTC.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing layout:  25%|██▌       | 1/4 [00:01<00:03,  1.11s/it]Recognizing layout:  50%|█████     | 2/4 [00:01<00:01,  1.38it/s]Recognizing layout:  75%|███████▌  | 3/4 [00:02<00:00,  1.67it/s]Recognizing layout: 100%|██████████| 4/4 [00:02<00:00,  1.99it/s]Recognizing layout: 100%|██████████| 4/4 [00:02<00:00,  1.69it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 62.19it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:02,  1.08s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.27s/it]Recognizing tables: 100%|██████████| 3/3 [00:03<00:00,  1.01s/it]Recognizing tables: 100%|██████████| 3/3 [00:03<00:00,  1.06s/it]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:42:42 | 200 |  510.059828ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:00,  1.66it/s][GIN] 2025/07/22 - 05:42:43 | 200 |  1.264998815s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:01,  1.45it/s][GIN] 2025/07/22 - 05:42:44 | 200 |  1.946851749s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:02,  1.03it/s][GIN] 2025/07/22 - 05:42:48 | 200 |  4.878445068s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:06,  2.02s/it][GIN] 2025/07/22 - 05:42:52 | 200 |  10.22796598s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:10,  2.78s/it][GIN] 2025/07/22 - 05:43:04 | 200 | 19.576132439s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:22,  5.91s/it][GIN] 2025/07/22 - 05:43:05 | 200 | 12.857567567s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:23,  4.30s/it][GIN] 2025/07/22 - 05:43:08 | 200 | 20.192291027s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:26,  3.99s/it][GIN] 2025/07/22 - 05:43:13 | 200 |   9.49706534s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:31,  4.40s/it][GIN] 2025/07/22 - 05:43:14 | 200 |  5.770983296s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:32,  3.19s/it][GIN] 2025/07/22 - 05:43:15 | 200 | 10.239700625s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:33,  2.57s/it][GIN] 2025/07/22 - 05:43:17 | 200 |  3.423648284s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:35,  2.33s/it][GIN] 2025/07/22 - 05:43:19 | 200 |  5.341760961s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:37,  2.36s/it][GIN] 2025/07/22 - 05:43:20 | 200 |  3.039003692s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:38,  1.84s/it][GIN] 2025/07/22 - 05:43:21 | 200 |  5.550098441s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [00:39,  1.51s/it][GIN] 2025/07/22 - 05:43:23 | 200 |  3.532162269s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [00:41,  1.71s/it][GIN] 2025/07/22 - 05:43:23 | 200 |  3.248672281s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [00:41,  1.31s/it][GIN] 2025/07/22 - 05:43:24 | 200 |  894.526053ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [00:42,  1.11s/it][GIN] 2025/07/22 - 05:43:27 | 200 |  6.017261673s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [00:45,  1.63s/it][GIN] 2025/07/22 - 05:43:28 | 200 |  4.709288539s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [00:46,  1.52s/it][GIN] 2025/07/22 - 05:43:36 | 200 | 12.135574655s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [00:54,  3.50s/it][GIN] 2025/07/22 - 05:43:37 | 200 | 10.480985169s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [00:55,  2.81s/it][GIN] 2025/07/22 - 05:43:40 | 200 |  3.999300766s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [00:58,  2.81s/it][GIN] 2025/07/22 - 05:43:40 | 200 |  3.174068691s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [00:59,  2.08s/it][GIN] 2025/07/22 - 05:43:43 | 200 |  3.093140598s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:01,  2.28s/it][GIN] 2025/07/22 - 05:43:44 | 200 |  3.284650108s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:02,  1.81s/it][GIN] 2025/07/22 - 05:43:47 | 200 |   3.81489348s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:05,  2.21s/it][GIN] 2025/07/22 - 05:43:48 | 200 |   3.83931753s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:06,  1.77s/it][GIN] 2025/07/22 - 05:43:48 | 200 | 20.565441552s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [01:07,  1.47s/it][GIN] 2025/07/22 - 05:43:50 | 200 |  3.004303335s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [01:08,  1.49s/it][GIN] 2025/07/22 - 05:43:53 | 200 |  4.264168578s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [01:11,  1.87s/it][GIN] 2025/07/22 - 05:43:55 | 200 |  5.057503356s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [01:13,  2.01s/it][GIN] 2025/07/22 - 05:43:58 | 200 |  9.926957114s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [01:16,  2.19s/it][GIN] 2025/07/22 - 05:43:59 | 200 |  5.961793007s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [01:17,  1.85s/it][GIN] 2025/07/22 - 05:44:00 | 200 |  5.102925986s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [01:18,  1.73s/it][GIN] 2025/07/22 - 05:44:01 | 200 |  3.373373743s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [01:19,  1.48s/it][GIN] 2025/07/22 - 05:44:03 | 200 |  4.647726609s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [01:22,  1.74s/it][GIN] 2025/07/22 - 05:44:04 | 200 |  3.381683985s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [01:22,  1.34s/it][GIN] 2025/07/22 - 05:44:09 | 200 |  8.131645908s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [01:28,  2.58s/it][GIN] 2025/07/22 - 05:44:12 | 200 |  8.785098643s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [01:30,  2.69s/it][GIN] 2025/07/22 - 05:44:18 | 200 |  8.477311641s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [01:36,  3.57s/it][GIN] 2025/07/22 - 05:44:18 | 200 | 14.453769957s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [01:37,  2.66s/it]LLMTableProcessor running: 42it [01:37,  2.31s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:44:21 | 200 |  2.253178113s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:44:21 | 200 |  2.362448534s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:02,  2.45s/it][GIN] 2025/07/22 - 05:44:23 | 200 |  2.316004276s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:44:23 | 200 |   4.81430663s |       127.0.0.1 | POST     "/api/generate"
+time=2025-07-22T05:44:23.908-04:00 level=WARN source=runner.go:128 msg="truncating input prompt" limit=4096 prompt=5053 keep=5 new=4096
+[GIN] 2025/07/22 - 05:44:26 | 200 |  2.477447757s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:44:27 | 200 |  3.917029353s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 2it [00:08,  4.79s/it][GIN] 2025/07/22 - 05:44:29 | 200 |  2.802783002s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 3it [00:10,  3.29s/it]LLMTableMergeProcessor running: 3it [00:10,  3.46s/it]
+LLM processors running:   0%|          | 0/4 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:44:30 | 200 |   1.38416336s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:44:31 | 200 |  1.696293202s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  25%|██▌       | 1/4 [00:01<00:05,  1.76s/it][GIN] 2025/07/22 - 05:44:32 | 200 |  1.285198645s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:44:34 | 200 |  5.416761301s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 2/4 [00:05<00:05,  2.91s/it]LLM processors running: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:44:34 | 500 |   23.858155ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:44:34,897 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:44:34,897 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 35.86it/s]
+2025-07-22 05:44:36,233 [INFO] marker: Saved markdown to marker_output/2023 Q1 INTC
+2025-07-22 05:44:36,233 [INFO] marker: Total time: 127.57109546661377
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q1 MSFT.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/6 [00:00<?, ?it/s]Recognizing layout:  17%|█▋        | 1/6 [00:00<00:04,  1.00it/s]Recognizing layout:  33%|███▎      | 2/6 [00:01<00:02,  1.53it/s]Recognizing layout:  50%|█████     | 3/6 [00:01<00:01,  1.77it/s]Recognizing layout:  67%|██████▋   | 4/6 [00:02<00:01,  1.89it/s]Recognizing layout:  83%|████████▎ | 5/6 [00:02<00:00,  2.06it/s]Recognizing layout: 100%|██████████| 6/6 [00:03<00:00,  2.19it/s]Recognizing layout: 100%|██████████| 6/6 [00:03<00:00,  1.90it/s]
+Running OCR Error Detection:   0%|          | 0/6 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 6/6 [00:00<00:00, 99.21it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing tables:  25%|██▌       | 1/4 [00:01<00:03,  1.28s/it]Recognizing tables:  50%|█████     | 2/4 [00:01<00:01,  1.05it/s]Recognizing tables:  75%|███████▌  | 3/4 [00:02<00:00,  1.18it/s]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.28it/s]Recognizing tables: 100%|██████████| 4/4 [00:03<00:00,  1.17it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:45:22 | 200 |   1.00376068s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:01,  1.30s/it][GIN] 2025/07/22 - 05:45:29 | 200 |   7.73284191s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:08,  4.51s/it][GIN] 2025/07/22 - 05:45:29 | 200 |  7.560320205s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:08,  2.82s/it][GIN] 2025/07/22 - 05:45:31 | 200 | 10.434714413s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:10,  2.42s/it][GIN] 2025/07/22 - 05:45:55 | 200 | 26.480442933s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:34, 10.21s/it][GIN] 2025/07/22 - 05:46:07 | 200 | 35.598570771s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:46, 10.71s/it][GIN] 2025/07/22 - 05:46:09 | 200 | 39.657088474s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:48,  7.97s/it][GIN] 2025/07/22 - 05:46:15 | 200 |  8.526592272s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:54,  7.42s/it][GIN] 2025/07/22 - 05:46:20 | 200 | 10.733056663s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:59,  6.51s/it][GIN] 2025/07/22 - 05:46:26 | 200 | 10.283150421s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [01:05,  6.29s/it][GIN] 2025/07/22 - 05:46:27 | 200 |  6.936580116s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [01:06,  4.75s/it][GIN] 2025/07/22 - 05:46:29 | 200 |  3.068425397s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [01:08,  3.89s/it][GIN] 2025/07/22 - 05:46:32 | 200 | 36.556211595s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [01:11,  3.57s/it][GIN] 2025/07/22 - 05:46:41 | 200 | 14.042407823s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:20,  5.31s/it][GIN] 2025/07/22 - 05:46:43 | 200 | 13.591536178s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:22,  4.15s/it][GIN] 2025/07/22 - 05:46:45 | 200 | 12.729114388s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:24,  3.50s/it][GIN] 2025/07/22 - 05:46:48 | 200 |  7.060256521s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:27,  3.54s/it][GIN] 2025/07/22 - 05:46:49 | 200 |  3.965469951s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:28,  2.58s/it][GIN] 2025/07/22 - 05:46:55 | 200 | 11.996945728s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:34,  3.64s/it][GIN] 2025/07/22 - 05:46:58 | 200 |  9.301904538s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:37,  3.42s/it][GIN] 2025/07/22 - 05:46:59 | 200 |  4.425212519s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:38,  2.86s/it][GIN] 2025/07/22 - 05:47:00 | 200 | 11.519521569s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:39,  2.29s/it][GIN] 2025/07/22 - 05:47:01 | 200 |  3.475858852s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:40,  1.90s/it][GIN] 2025/07/22 - 05:47:03 | 200 |  3.147879212s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:42,  1.99s/it][GIN] 2025/07/22 - 05:47:04 | 200 |  4.903100535s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:43,  1.63s/it][GIN] 2025/07/22 - 05:47:07 | 200 |  3.355386243s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:46,  1.92s/it][GIN] 2025/07/22 - 05:47:09 | 200 |  7.825394893s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:48,  2.03s/it][GIN] 2025/07/22 - 05:47:09 | 200 |  2.539183352s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:48,  1.51s/it][GIN] 2025/07/22 - 05:47:16 | 200 |  7.006192852s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [01:55,  3.08s/it][GIN] 2025/07/22 - 05:47:17 | 200 | 13.073368169s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [01:56,  2.53s/it][GIN] 2025/07/22 - 05:47:18 | 200 |  8.606103457s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [01:57,  1.96s/it][GIN] 2025/07/22 - 05:47:21 | 200 |  4.961258762s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:00,  2.31s/it][GIN] 2025/07/22 - 05:47:22 | 200 |  5.058215244s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [02:01,  2.02s/it][GIN] 2025/07/22 - 05:47:27 | 200 |  5.802164832s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [02:06,  2.77s/it][GIN] 2025/07/22 - 05:47:30 | 200 |  7.272360909s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [02:09,  2.77s/it][GIN] 2025/07/22 - 05:47:35 | 200 | 17.514952493s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [02:14,  3.69s/it][GIN] 2025/07/22 - 05:47:39 | 200 | 12.210722485s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [02:18,  3.67s/it][GIN] 2025/07/22 - 05:47:40 | 200 |  4.015234848s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [02:19,  2.70s/it][GIN] 2025/07/22 - 05:47:44 | 200 |  4.502415083s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [02:23,  3.12s/it][GIN] 2025/07/22 - 05:47:50 | 200 | 19.815395822s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [02:29,  3.97s/it][GIN] 2025/07/22 - 05:47:51 | 200 |  7.290916473s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [02:30,  3.19s/it][GIN] 2025/07/22 - 05:47:55 | 200 |  5.585323352s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [02:34,  3.53s/it][GIN] 2025/07/22 - 05:47:57 | 200 | 17.020691047s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 43it [02:36,  2.87s/it][GIN] 2025/07/22 - 05:47:58 | 200 |  7.118530272s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 44it [02:37,  2.47s/it][GIN] 2025/07/22 - 05:48:05 | 200 |  8.814188235s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 45it [02:44,  3.93s/it][GIN] 2025/07/22 - 05:48:08 | 200 | 12.614542543s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 46it [02:47,  3.49s/it][GIN] 2025/07/22 - 05:48:08 | 200 | 10.037181296s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 47it [02:47,  2.52s/it][GIN] 2025/07/22 - 05:48:11 | 200 |  5.425625664s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 48it [02:50,  2.59s/it][GIN] 2025/07/22 - 05:48:13 | 200 |  4.710170825s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 49it [02:52,  2.33s/it][GIN] 2025/07/22 - 05:48:22 | 200 | 13.707012802s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 50it [03:01,  4.41s/it][GIN] 2025/07/22 - 05:48:26 | 200 | 13.408659162s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 51it [03:05,  4.34s/it][GIN] 2025/07/22 - 05:48:30 | 200 |  8.085485671s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 52it [03:09,  4.22s/it][GIN] 2025/07/22 - 05:48:32 | 200 | 20.670123905s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 53it [03:11,  3.45s/it][GIN] 2025/07/22 - 05:48:35 | 200 |  8.465964191s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 54it [03:14,  3.29s/it][GIN] 2025/07/22 - 05:48:35 | 200 |   4.96422645s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 55it [03:14,  2.43s/it]LLMTableProcessor running: 55it [03:14,  3.54s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s]LLMTableMergeProcessor running: 0it [00:00, ?it/s]
+LLM processors running:   0%|          | 0/3 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:48:40 | 200 |  3.285643034s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  33%|███▎      | 1/3 [00:04<00:08,  4.23s/it][GIN] 2025/07/22 - 05:48:41 | 200 |   3.34934227s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:48:41 | 200 |   4.13021582s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  67%|██████▋   | 2/3 [00:05<00:02,  2.24s/it]LLM processors running: 100%|██████████| 3/3 [00:05<00:00,  1.69s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:48:41 | 500 |   24.098092ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:48:41,962 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:48:41,962 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 34.33it/s]
+2025-07-22 05:48:45,570 [INFO] marker: Saved markdown to marker_output/2023 Q1 MSFT
+2025-07-22 05:48:45,570 [INFO] marker: Total time: 235.03347635269165
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q1 NVDA.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing layout:  20%|██        | 1/5 [00:00<00:03,  1.08it/s]Recognizing layout:  40%|████      | 2/5 [00:01<00:01,  1.60it/s]Recognizing layout:  60%|██████    | 3/5 [00:01<00:01,  1.85it/s]Recognizing layout:  80%|████████  | 4/5 [00:02<00:00,  2.10it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.61it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.10it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 81.15it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/4 [00:00<?, ?it/s]Recognizing tables:  25%|██▌       | 1/4 [00:00<00:02,  1.02it/s]Recognizing tables:  50%|█████     | 2/4 [00:01<00:01,  1.02it/s]Recognizing tables:  75%|███████▌  | 3/4 [00:02<00:00,  1.19it/s]Recognizing tables: 100%|██████████| 4/4 [00:02<00:00,  1.66it/s]Recognizing tables: 100%|██████████| 4/4 [00:02<00:00,  1.39it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:49:24 | 200 |  1.649650865s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:01,  1.10it/s][GIN] 2025/07/22 - 05:49:30 | 200 |  7.523781133s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:07,  3.01s/it][GIN] 2025/07/22 - 05:49:34 | 200 | 10.923079181s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:11,  3.16s/it][GIN] 2025/07/22 - 05:49:40 | 200 |  15.77295091s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:17,  4.31s/it][GIN] 2025/07/22 - 05:49:44 | 200 | 13.428418307s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:21,  4.10s/it][GIN] 2025/07/22 - 05:49:51 | 200 | 17.365541693s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:28,  5.13s/it][GIN] 2025/07/22 - 05:49:55 | 200 |  10.47265163s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:31,  4.53s/it][GIN] 2025/07/22 - 05:49:57 | 200 |  16.26534938s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:34,  3.81s/it][GIN] 2025/07/22 - 05:49:59 | 200 |  7.872172766s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:36,  3.40s/it][GIN] 2025/07/22 - 05:50:00 | 200 |   3.36809232s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:37,  2.65s/it][GIN] 2025/07/22 - 05:50:03 | 200 |   8.14587281s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:40,  2.62s/it][GIN] 2025/07/22 - 05:50:12 | 200 | 11.493488398s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:49,  4.55s/it][GIN] 2025/07/22 - 05:50:12 | 200 | 13.183882421s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:49,  3.40s/it][GIN] 2025/07/22 - 05:50:19 | 200 |  6.806823203s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [00:55,  4.22s/it][GIN] 2025/07/22 - 05:50:23 | 200 | 20.127906154s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:00,  4.25s/it][GIN] 2025/07/22 - 05:50:23 | 200 |  4.568879746s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:00,  3.06s/it][GIN] 2025/07/22 - 05:50:30 | 200 | 17.383876127s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:07,  4.16s/it][GIN] 2025/07/22 - 05:50:36 | 200 | 12.592421669s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:13,  4.69s/it][GIN] 2025/07/22 - 05:50:37 | 200 | 14.409462602s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:14,  3.76s/it][GIN] 2025/07/22 - 05:50:38 | 200 |  1.844827875s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:15,  2.71s/it][GIN] 2025/07/22 - 05:50:38 | 200 |  7.912661039s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:15,  1.95s/it][GIN] 2025/07/22 - 05:50:43 | 200 |  5.210767022s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:19,  2.81s/it][GIN] 2025/07/22 - 05:51:29 | 200 | 50.946248799s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [02:06, 15.82s/it][GIN] 2025/07/22 - 05:51:35 | 200 | 51.825203195s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [02:11, 12.78s/it][GIN] 2025/07/22 - 05:51:37 | 200 |  7.655445939s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [02:13,  9.55s/it][GIN] 2025/07/22 - 05:51:45 | 200 | 10.228270711s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [02:22,  9.17s/it][GIN] 2025/07/22 - 05:51:48 | 200 | 10.953019061s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [02:24,  7.23s/it][GIN] 2025/07/22 - 05:51:50 | 200 |  5.464168967s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:27,  5.90s/it][GIN] 2025/07/22 - 05:51:55 | 200 |  7.773018772s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:32,  5.64s/it][GIN] 2025/07/22 - 05:51:57 | 200 |  7.004345398s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:34,  4.55s/it][GIN] 2025/07/22 - 05:52:07 | 200 | 11.447048024s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [02:44,  6.03s/it][GIN] 2025/07/22 - 05:52:09 | 200 | 11.900087686s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 33it [02:46,  4.96s/it][GIN] 2025/07/22 - 05:52:15 | 200 |  8.410210353s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 34it [02:52,  5.27s/it][GIN] 2025/07/22 - 05:52:21 | 200 | 11.506439053s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 35it [02:58,  5.37s/it][GIN] 2025/07/22 - 05:52:25 | 200 |  9.474285737s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 36it [03:02,  4.93s/it][GIN] 2025/07/22 - 05:52:30 | 200 |  9.390781958s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 37it [03:07,  5.11s/it][GIN] 2025/07/22 - 05:52:35 | 200 | 10.071611336s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 38it [03:12,  4.95s/it][GIN] 2025/07/22 - 05:52:39 | 200 |  8.188907495s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 39it [03:15,  4.56s/it][GIN] 2025/07/22 - 05:52:39 | 200 |  3.992033873s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 40it [03:16,  3.30s/it][GIN] 2025/07/22 - 05:52:44 | 200 |  5.751460494s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 41it [03:21,  3.94s/it][GIN] 2025/07/22 - 05:52:55 | 200 | 16.309458333s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 42it [03:32,  6.06s/it][GIN] 2025/07/22 - 05:54:58 | 200 |         4m20s |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:54:58,353 [WARNING] marker: Ollama inference failed: Unterminated string starting at: line 1 column 3528 (char 3527)
+LLMTableProcessor running: 43it [05:35, 40.99s/it]LLMTableProcessor running: 43it [05:35,  7.79s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s]LLMTableMergeProcessor running: 0it [00:00, ?it/s]
+LLM processors running:   0%|          | 0/2 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:55:01 | 200 |  1.667622697s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 1/2 [00:02<00:02,  2.23s/it][GIN] 2025/07/22 - 05:55:02 | 200 |  2.472613713s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running: 100%|██████████| 2/2 [00:03<00:00,  1.39s/it]LLM processors running: 100%|██████████| 2/2 [00:03<00:00,  1.52s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:55:02 | 500 |   39.019002ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:55:02,238 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:55:02,238 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 23.32it/s]
+2025-07-22 05:55:03,793 [INFO] marker: Saved markdown to marker_output/2023 Q1 NVDA
+2025-07-22 05:55:03,793 [INFO] marker: Total time: 363.78301215171814
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q2 AAPL.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing layout:  33%|███▎      | 1/3 [00:00<00:01,  1.08it/s]Recognizing layout:  67%|██████▋   | 2/3 [00:01<00:00,  1.55it/s]Recognizing layout: 100%|██████████| 3/3 [00:01<00:00,  2.02it/s]Recognizing layout: 100%|██████████| 3/3 [00:01<00:00,  1.77it/s]
+Running OCR Error Detection:   0%|          | 0/2 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 2/2 [00:00<00:00, 73.39it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:02,  1.31s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.05s/it]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.39it/s]Recognizing tables: 100%|██████████| 3/3 [00:02<00:00,  1.20it/s]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:55:28 | 200 |  485.424548ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:00,  1.75it/s][GIN] 2025/07/22 - 05:55:33 | 200 |  5.739394231s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:05,  3.35s/it][GIN] 2025/07/22 - 05:55:37 | 200 |    9.9336969s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:10,  3.73s/it][GIN] 2025/07/22 - 05:55:44 | 200 | 15.514607204s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:16,  4.69s/it][GIN] 2025/07/22 - 05:55:57 | 200 | 19.797342201s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:29,  7.97s/it][GIN] 2025/07/22 - 05:55:59 | 200 | 25.445566072s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:31,  5.74s/it][GIN] 2025/07/22 - 05:56:00 | 200 |  2.454935826s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:32,  4.25s/it][GIN] 2025/07/22 - 05:56:09 | 200 | 25.311910797s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:41,  5.78s/it][GIN] 2025/07/22 - 05:56:11 | 200 | 11.912029923s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:43,  4.51s/it][GIN] 2025/07/22 - 05:56:15 | 200 | 15.106046978s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:47,  4.47s/it][GIN] 2025/07/22 - 05:56:26 | 200 |  16.96494182s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:58,  6.45s/it][GIN] 2025/07/22 - 05:56:28 | 200 | 12.597961958s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [01:00,  5.00s/it][GIN] 2025/07/22 - 05:56:30 | 200 | 18.648608318s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [01:02,  4.01s/it][GIN] 2025/07/22 - 05:56:34 | 200 |  7.794211668s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [01:06,  4.13s/it][GIN] 2025/07/22 - 05:56:35 | 200 |  6.891542043s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [01:07,  3.12s/it][GIN] 2025/07/22 - 05:56:35 | 200 |  967.405096ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:07,  2.24s/it][GIN] 2025/07/22 - 05:56:35 | 200 |  630.071967ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:07,  1.70s/it][GIN] 2025/07/22 - 05:56:38 | 200 |  3.276112261s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:10,  2.05s/it][GIN] 2025/07/22 - 05:56:39 | 200 |  9.033647336s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:11,  1.54s/it][GIN] 2025/07/22 - 05:56:42 | 200 |  3.826446333s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:14,  2.13s/it][GIN] 2025/07/22 - 05:56:43 | 200 |  7.187837544s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:15,  1.64s/it][GIN] 2025/07/22 - 05:56:45 | 200 |  2.581606796s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [01:17,  1.78s/it][GIN] 2025/07/22 - 05:56:45 | 200 |  6.747149803s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [01:17,  1.45s/it][GIN] 2025/07/22 - 05:56:46 | 200 |  3.239711832s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [01:18,  1.18s/it][GIN] 2025/07/22 - 05:56:49 | 200 |   3.95860039s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [01:21,  1.66s/it][GIN] 2025/07/22 - 05:56:52 | 200 |  6.419110426s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [01:24,  2.10s/it][GIN] 2025/07/22 - 05:56:52 | 200 |  3.483005238s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [01:24,  1.59s/it][GIN] 2025/07/22 - 05:56:54 | 200 |  8.143808071s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [01:26,  1.68s/it][GIN] 2025/07/22 - 05:56:55 | 200 |  2.309467237s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [01:27,  1.31s/it][GIN] 2025/07/22 - 05:56:58 | 200 |   5.99607835s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [01:30,  1.91s/it][GIN] 2025/07/22 - 05:57:00 | 200 |  5.999548309s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [01:32,  2.02s/it][GIN] 2025/07/22 - 05:57:03 | 200 |  8.728102135s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 32it [01:35,  2.37s/it]LLMTableProcessor running: 32it [01:35,  3.00s/it]
+LLMTableMergeProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:57:05 | 200 |  1.703156762s |       127.0.0.1 | POST     "/api/generate"
+time=2025-07-22T05:57:05.772-04:00 level=WARN source=runner.go:128 msg="truncating input prompt" limit=4096 prompt=4190 keep=5 new=4096
+[GIN] 2025/07/22 - 05:57:07 | 200 |  1.720899434s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:57:09 | 200 |  2.107910893s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:57:12 | 200 |  2.707439265s |       127.0.0.1 | POST     "/api/generate"
+LLMTableMergeProcessor running: 1it [00:08,  8.63s/it]LLMTableMergeProcessor running: 1it [00:08,  8.63s/it]
+LLM processors running:   0%|          | 0/2 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:57:14 | 200 |  1.542135703s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2025/07/22 - 05:57:20 | 200 |  7.809015416s |       127.0.0.1 | POST     "/api/generate"
+LLM processors running:  50%|█████     | 1/2 [00:07<00:07,  7.87s/it]LLM processors running: 100%|██████████| 2/2 [00:07<00:00,  3.93s/it]
+Running LLMSectionHeaderProcessor:   0%|          | 0/1 [00:00<?, ?it/s][GIN] 2025/07/22 - 05:57:20 | 500 |   24.097922ms |       127.0.0.1 | POST     "/api/generate"
+2025-07-22 05:57:20,426 [WARNING] marker: Ollama inference failed: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2025-07-22 05:57:20,427 [WARNING] marker: LLM did not return a valid response
+Running LLMSectionHeaderProcessor: 100%|██████████| 1/1 [00:00<00:00, 35.36it/s]
+2025-07-22 05:57:21,536 [INFO] marker: Saved markdown to marker_output/2023 Q2 AAPL
+2025-07-22 05:57:21,536 [INFO] marker: Total time: 124.0590443611145
++ for file in docs/*.pdf
++ marker_single 'docs/2023 Q2 AMZN.pdf' --use_llm --llm_service=marker.services.ollama.OllamaService --ollama_base_url http://localhost:11434 --ollama_model llama3.2:3b --output_format markdown --output_dir marker_output
+Recognizing layout:   0%|          | 0/5 [00:00<?, ?it/s]Recognizing layout:  20%|██        | 1/5 [00:00<00:03,  1.00it/s]Recognizing layout:  40%|████      | 2/5 [00:01<00:01,  1.53it/s]Recognizing layout:  60%|██████    | 3/5 [00:01<00:01,  1.76it/s]Recognizing layout:  80%|████████  | 4/5 [00:02<00:00,  1.85it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  2.17it/s]Recognizing layout: 100%|██████████| 5/5 [00:02<00:00,  1.85it/s]
+Running OCR Error Detection:   0%|          | 0/4 [00:00<?, ?it/s]Running OCR Error Detection: 100%|██████████| 4/4 [00:00<00:00, 81.35it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Detecting bboxes: 0it [00:00, ?it/s]Detecting bboxes: 0it [00:00, ?it/s]
+Recognizing tables:   0%|          | 0/3 [00:00<?, ?it/s]Recognizing tables:  33%|███▎      | 1/3 [00:01<00:03,  1.79s/it]Recognizing tables:  67%|██████▋   | 2/3 [00:02<00:01,  1.33s/it]Recognizing tables: 100%|██████████| 3/3 [00:03<00:00,  1.03it/s]Recognizing tables: 100%|██████████| 3/3 [00:03<00:00,  1.11s/it]
+LLMTableProcessor running: 0it [00:00, ?it/s][GIN] 2025/07/22 - 05:58:10 | 200 |  7.448666479s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 1it [00:07,  7.72s/it][GIN] 2025/07/22 - 05:58:24 | 200 | 21.173778477s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 2it [00:21, 11.28s/it][GIN] 2025/07/22 - 05:58:26 | 200 | 23.056282819s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 3it [00:23,  7.00s/it][GIN] 2025/07/22 - 05:58:27 | 200 |  2.353947738s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 4it [00:23,  4.47s/it][GIN] 2025/07/22 - 05:58:33 | 200 |  7.270880329s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 5it [00:30,  5.29s/it][GIN] 2025/07/22 - 05:58:34 | 200 |  7.004664655s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 6it [00:31,  3.59s/it][GIN] 2025/07/22 - 05:58:34 | 200 |  933.475282ms |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 7it [00:31,  2.64s/it][GIN] 2025/07/22 - 05:58:38 | 200 |  4.249299578s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 8it [00:35,  2.94s/it][GIN] 2025/07/22 - 05:58:44 | 200 | 33.242399125s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 9it [00:41,  3.82s/it][GIN] 2025/07/22 - 05:58:48 | 200 | 10.355316535s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 10it [00:45,  4.07s/it][GIN] 2025/07/22 - 05:58:49 | 200 | 15.015217294s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 11it [00:46,  3.17s/it][GIN] 2025/07/22 - 05:58:50 | 200 |  6.627838493s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 12it [00:47,  2.47s/it][GIN] 2025/07/22 - 05:58:52 | 200 |  2.441652824s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 13it [00:49,  2.21s/it][GIN] 2025/07/22 - 05:59:00 | 200 |  11.24613497s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 14it [00:56,  3.86s/it][GIN] 2025/07/22 - 05:59:01 | 200 | 10.762670328s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 15it [00:58,  3.17s/it][GIN] 2025/07/22 - 05:59:09 | 200 |  9.307346136s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 16it [01:06,  4.57s/it][GIN] 2025/07/22 - 05:59:14 | 200 | 12.415894945s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 17it [01:10,  4.59s/it][GIN] 2025/07/22 - 05:59:19 | 200 |  9.657996284s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 18it [01:16,  4.73s/it][GIN] 2025/07/22 - 05:59:21 | 200 |  7.458279389s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 19it [01:18,  4.04s/it][GIN] 2025/07/22 - 05:59:31 | 200 | 12.649732442s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 20it [01:28,  5.93s/it][GIN] 2025/07/22 - 05:59:52 | 200 | 30.638050453s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 21it [01:49, 10.28s/it][GIN] 2025/07/22 - 06:00:03 | 200 | 31.280618897s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 22it [02:00, 10.47s/it][GIN] 2025/07/22 - 06:00:03 | 200 | 11.204482541s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 23it [02:00,  7.42s/it][GIN] 2025/07/22 - 06:00:15 | 200 | 12.118486635s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 24it [02:12,  8.77s/it][GIN] 2025/07/22 - 06:00:18 | 200 | 15.300775995s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 25it [02:15,  7.17s/it][GIN] 2025/07/22 - 06:00:34 | 200 | 19.112785495s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 26it [02:31,  9.75s/it][GIN] 2025/07/22 - 06:00:35 | 200 | 16.449139955s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 27it [02:32,  7.04s/it][GIN] 2025/07/22 - 06:00:36 | 200 |  1.584656242s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 28it [02:33,  5.21s/it][GIN] 2025/07/22 - 06:00:41 | 200 |  6.396293313s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 29it [02:38,  5.30s/it][GIN] 2025/07/22 - 06:00:43 | 200 |  7.568366898s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 30it [02:40,  4.34s/it][GIN] 2025/07/22 - 06:00:50 | 200 |  8.729263488s |       127.0.0.1 | POST     "/api/generate"
+LLMTableProcessor running: 31it [02:47,  5.06s/it]
