@@ -1,4 +1,7 @@
 ## Haystack RAG PACE demo backed w/Neo4j (v5.28.1) vector db
+
+* Download chat.py, config.py, ingest.py, llm.py and follow the below instructions to run.
+
 First ensure Neo4j is installed (I use the latest community version - v5.28.1) and added to your $PATH. Start the server with:
 - neo4j start
 
