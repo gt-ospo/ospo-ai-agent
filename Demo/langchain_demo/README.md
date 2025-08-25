@@ -1,5 +1,9 @@
 # ospo-ai-agent
 
+### LangChain Demo 
+
+The LangChain demo is in this directory. Check out the [langchain_pace_demo_m2.ipynb](https://github.com/gt-ospo/ospo-ai-agent/blob/main/Demo/langchain_demo/langchain_pace_demo_m2.ipynb).
+
 ### SMARTech Scraper Notes
 
 The file essentially scrapes in batches of 20 from each "page" listing (i.e 1-20, 21-40, etc) and downloads all pdfs associated with each item to a local dir. You can adjust the max number of pages. The scraper requests: item_id (id of the paper) -> bundle_id (multiple per item) -> bitsream_id (multiple per bundle) from the servers REST endpoints. SMARTech uses the DSpace 7 open‑source digital asset management system backend (which is what the retrieval flow is based on). 
