@@ -1,19 +1,21 @@
-### Financial Performance Overview
+# Q3 2024 Financial Performance Summary
 
-#### Revenue
+### Revenue Highlights
 
-* Q3 2024 revenue: $89.5 billion (6% increase from Q3 2023)
-* iPhone revenue: $46.2 billion (up 6.7% from prior year quarter)
-* Services revenue: $22.3 billion (12% year-over-year growth)
+* Total revenue: $89.5 billion (6% increase from Q3 2023)
+* iPhone revenue: $46.2 billion (up 5.8%)
+* Services revenue: $22.3 billion (12% increase year-over-year)
 
-#### Geographic Breakdown
+### Operating Expenses
 
-| Region | Revenue |
-| --- | --- |
-| Americas | $37.2 billion |
-| Europe | $22.5 billion |
-| Greater China | $15.1 billion |
-| Japan | $5.9 billion |
-| Rest of Asia Pacific | $8.8 billion |
+* Research and development expenses: $7.8 billion
+* Sales and marketing expenses: $1.2 billion
+* General and administrative expenses: $0.6 billion
 
-Note: These figures are based on the provided sample text and may not reflect actual financial performance.
+### Geographic Breakdown
+
+* Americas: $37.2 billion
+* Europe: $22.5 billion
+* Greater China: $15.1 billion
+* Japan: $5.9 billion
+* Rest of Asia Pacific: $8.8 billion
