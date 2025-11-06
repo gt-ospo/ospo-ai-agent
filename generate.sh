@@ -8,7 +8,7 @@ fi
 
 # Install marker-pdf if not already installed
 echo "Installing marker-pdf package..."
-pip install marker-pdf
+pip install marker-pdf==1.10.1
 
 if [ ! -d ~/.cache/datalab ]; then
   DATALAB_CACHE="/scratch/$(date +%s)"
